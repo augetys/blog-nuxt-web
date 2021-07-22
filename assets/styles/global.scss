@@ -1,0 +1,106 @@
+:root, html {
+  font-size: $font-size-root;
+  box-sizing: border-box;
+  cursor: default;
+  -webkit-text-size-adjust: 100%; // iOS 8+, Windows Phone 8.1+
+  // user-select: none; /* 禁止用户鼠标在页面上选中文字/图片等 */
+  -webkit-tap-highlight-color: transparent; /* webkit是苹果浏览器引擎，tap点击，highlight背景高亮，color颜色，颜色用数值调节 */
+}
+
+body {
+  overflow-x: hidden;
+  // font-family: $font-family-base;
+  font-size: $font-size-base;
+  line-height: $line-height-base;
+  -webkit-font-smoothing: antialiased;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  box-shadow: none;
+  border-radius: 0;
+  font-size: inherit;
+  line-height: inherit;
+  background-repeat: no-repeat;
+}
+
+*,
+::before,
+::after {
+  box-sizing: inherit;
+  border-style: solid;
+  border-width: 0;
+}
+
+::before,
+::after {
+  text-decoration: inherit;
+  vertical-align: inherit;
+}
+
+a {
+  text-decoration: none;
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+.container{
+  width:1050px;
+  margin: auto;
+}
+
+h1 {
+  font-size: $font-size-h1;
+  font-weight: 700;
+  margin: 1em 0;
+}
+
+h2 {
+  font-size: $font-size-h2;
+  font-weight: 700;
+  margin: 1em 0;
+}
+
+h3 {
+  font-size: $font-size-h3;
+  font-weight: 600;
+  margin: 1em 0;
+}
+
+h4 {
+  font-size: $font-size-h4;
+  font-weight: 500;
+  margin: 1em 0;
+}
+
+h5 {
+  font-size: $font-size-h5;
+  font-weight: 500;
+  margin: 1em 0;
+}
+
+a {
+  color: $link-color;
+
+  &:hover,
+  &:focus {
+    color: $link-hover-color;
+  }
+}
+
+main,
+header,
+footer,
+article,
+section,
+aside,
+details,
+summary {
+  margin: 0 auto;
+  width: 100%;
+}
+
+footer {
+  clear: both;
+}

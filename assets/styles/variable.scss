@@ -1,0 +1,55 @@
+// colors
+$accent: #4caf50;
+$red: #ff5722;
+$yellow: #ffeb3b;
+$grey: #efefef;
+$white: #ffffff;
+$black: #000000;
+$black-light: #555555;
+$primary:#ad6598;
+
+// typography
+$font-size-root: 12px;
+$font-size-base: 14px;
+$font-size-large: $font-size-base * 1.25; // ~17.5px
+$font-size-small: $font-size-base * .888; // ~12.4px
+
+$font-size-h1: $font-size-base * 1.7; // ~23.8px
+$font-size-h2: $font-size-base * 1.45; // ~20.3px
+$font-size-h3: $font-size-base * 1.3; // ~18.2px
+$font-size-h4: $font-size-base * 1.15; // ~16.1px
+$font-size-h5: $font-size-base;  // ~14px
+$font-size-h6: $font-size-base * 0.95; // ~13.3px
+
+// PC
+$header-height: 5.1rem;
+$footer-height: 6rem;
+$container-width: 1050px;
+$navbar-width: 160px;
+$main-width: 595px;
+$aside-width: 266px;
+
+// Z indexs
+$z-index-top: 99999;
+$z-index-header: 999;
+$z-index-toolbox: 9;
+$z-index-normal: 0;
+$z-index-underground: -9;
+
+// bg
+$module-bg: rgba($white, 0.6);
+
+// links
+$link-color: #555;
+$link-hover-color: darken(#555, 20%);
+
+// golden
+$golden-ratio: 0.618;
+
+// gap
+$gap: 1rem; // ~12px
+$sm-gap: $gap * $golden-ratio; // ~8px
+$xs-gap: $sm-gap / 2; // ~4px
+$lg-gap: $sm-gap * 2; // ~14px
+
+$line-height-base: 1.4;
