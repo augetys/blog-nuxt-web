@@ -16,7 +16,8 @@
     "element-ui": "^2.4.6",
     "@nuxtjs/axios": "^5.0.0",
     "@nuxtjs/style-resources": "^1.0.0",
-    "@nuxtjs/proxy": "^2.0.1"
+    "@nuxtjs/proxy": "^2.0.1",
+    "vue-canvas-nest": "^2.0.0"
   },
   "devDependencies": {
     "node-sass": "^4.14.0",

@@ -28,6 +28,7 @@ module.exports = {
   */
   css: [
     "~/assets/styles/global.scss",
+    "~/assets/fonts/iconfont.css",
     'element-ui/lib/theme-chalk/index.css'
   ],
   /*
@@ -35,8 +36,7 @@ module.exports = {
    */
   styleResources: {
     scss: [
-      "~/assets/styles/variable.scss",
-
+      "~/assets/styles/variable.scss"
     ],
   },
 
@@ -44,7 +44,9 @@ module.exports = {
   ** Plugins to load before mounting the App
   */
   plugins: [
-    '@/plugins/element-ui'
+    '@/plugins/element-ui',
+    { src: "~/plugins/canvas-nest", mode: "client" },
+    { src: '@/assets/fonts/iconfont.js', ssr: false }
   ],
 
   /*

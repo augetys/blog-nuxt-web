@@ -1,7 +1,9 @@
 <template>
   <div id="app-main">
+    <client-only>
+      <background />
+    </client-only>
     <Header/>
-
     <Nuxt/>
     <Footer/>
   </div>
@@ -10,15 +12,12 @@
 <script>
   import Header from "~/components/layout/Header.vue";
   import Footer from "~/components/layout/Footer.vue";
-  import NavView from "./Nav.vue";
-  import AsideView from "./Aside.vue";
-
+  import Background from "~/components/layout/Background.vue";
   export default {
     name: "PcMain",
     components: {
+      Background,
       Header,
-      NavView,
-      AsideView,
       Footer
     }
   }
