@@ -2,7 +2,7 @@ import request from '~/utils/request'
 
 export function getTags(data) {
   return request({
-    url: '/blog/blogTag/findAll',
+    url: '/blog/tag/findAll',
     method: 'post',
     data: data
   })

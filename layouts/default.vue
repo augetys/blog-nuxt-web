@@ -10,7 +10,7 @@
     name:"App",
     components: {
       MainView
-    },
+    }
   })
 </script>
 <style>
