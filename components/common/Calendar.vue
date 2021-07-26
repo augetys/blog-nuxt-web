@@ -117,7 +117,9 @@ export default {
 <style lang="scss" scoped>
 .calendar-box {
   min-height: 17em;
-
+  margin-bottom: 1.236rem;
+  background-color: #eee;
+  padding: 1rem;
   > .months {
     padding: 0;
     margin-bottom: $gap;

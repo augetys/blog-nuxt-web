@@ -1,5 +1,5 @@
 <template>
-  <div id="index-page" class="container" style="margin-top: 10px">
+  <div id="index-page" class="container">
     <!--左侧导航-->
     <div id="nav" class="nav-container aside-nav">
       <nav class="nav-list">
@@ -45,7 +45,7 @@
         </nuxt-link>
       </nav>
     </div>
-
+    <!--中间文章内容-->
     <div id="main" class="main-container">
       <!--轮播图-->
       <div class="block">
@@ -154,10 +154,202 @@
             </div>
           </div>
         </div>
+        <div class="article-list-item">
+          <div class="item-content">
+            <!-- 封面图-->
+            <div class="item-thumb">
+              <span class="item-oirigin other">转载</span>
+              <img class="item-thumb-img"/>
+            </div>
+            <!-- 标题和简介-->
+            <div class="item-body">
+              <h5 class="item-title">深拷贝和浅拷贝</h5>
+              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
+              <div class="item-meta">
+              <span class="date">
+                <i class="iconfont icon-clock"></i>
+                <span>2021/06/02 22:12</span>
+              </span>
+                <span class="views">
+                <i class="iconfont icon-view"></i>
+                <span>212</span>
+              </span>
+                <span class="comments">
+                <i class="iconfont icon-comment"></i>
+                <span>1</span>
+              </span>
+                <span class="likes">
+                <i class="iconfont icon-like"></i>
+                <span>0</span>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-list-item">
+          <div class="item-content">
+            <!-- 封面图-->
+            <div class="item-thumb">
+              <span class="item-oirigin other">转载</span>
+              <img class="item-thumb-img"/>
+            </div>
+            <!-- 标题和简介-->
+            <div class="item-body">
+              <h5 class="item-title">深拷贝和浅拷贝</h5>
+              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
+              <div class="item-meta">
+              <span class="date">
+                <i class="iconfont icon-clock"></i>
+                <span>2021/06/02 22:12</span>
+              </span>
+                <span class="views">
+                <i class="iconfont icon-view"></i>
+                <span>212</span>
+              </span>
+                <span class="comments">
+                <i class="iconfont icon-comment"></i>
+                <span>1</span>
+              </span>
+                <span class="likes">
+                <i class="iconfont icon-like"></i>
+                <span>0</span>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-list-item">
+          <div class="item-content">
+            <!-- 封面图-->
+            <div class="item-thumb">
+              <span class="item-oirigin other">转载</span>
+              <img class="item-thumb-img"/>
+            </div>
+            <!-- 标题和简介-->
+            <div class="item-body">
+              <h5 class="item-title">深拷贝和浅拷贝</h5>
+              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
+              <div class="item-meta">
+              <span class="date">
+                <i class="iconfont icon-clock"></i>
+                <span>2021/06/02 22:12</span>
+              </span>
+                <span class="views">
+                <i class="iconfont icon-view"></i>
+                <span>212</span>
+              </span>
+                <span class="comments">
+                <i class="iconfont icon-comment"></i>
+                <span>1</span>
+              </span>
+                <span class="likes">
+                <i class="iconfont icon-like"></i>
+                <span>0</span>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-list-item">
+          <div class="item-content">
+            <!-- 封面图-->
+            <div class="item-thumb">
+              <span class="item-oirigin other">转载</span>
+              <img class="item-thumb-img"/>
+            </div>
+            <!-- 标题和简介-->
+            <div class="item-body">
+              <h5 class="item-title">深拷贝和浅拷贝</h5>
+              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
+              <div class="item-meta">
+              <span class="date">
+                <i class="iconfont icon-clock"></i>
+                <span>2021/06/02 22:12</span>
+              </span>
+                <span class="views">
+                <i class="iconfont icon-view"></i>
+                <span>212</span>
+              </span>
+                <span class="comments">
+                <i class="iconfont icon-comment"></i>
+                <span>1</span>
+              </span>
+                <span class="likes">
+                <i class="iconfont icon-like"></i>
+                <span>0</span>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-list-item">
+          <div class="item-content">
+            <!-- 封面图-->
+            <div class="item-thumb">
+              <span class="item-oirigin other">转载</span>
+              <img class="item-thumb-img"/>
+            </div>
+            <!-- 标题和简介-->
+            <div class="item-body">
+              <h5 class="item-title">深拷贝和浅拷贝</h5>
+              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
+              <div class="item-meta">
+              <span class="date">
+                <i class="iconfont icon-clock"></i>
+                <span>2021/06/02 22:12</span>
+              </span>
+                <span class="views">
+                <i class="iconfont icon-view"></i>
+                <span>212</span>
+              </span>
+                <span class="comments">
+                <i class="iconfont icon-comment"></i>
+                <span>1</span>
+              </span>
+                <span class="likes">
+                <i class="iconfont icon-like"></i>
+                <span>0</span>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="article-list-item">
+          <div class="item-content">
+            <!-- 封面图-->
+            <div class="item-thumb">
+              <span class="item-oirigin other">转载</span>
+              <img class="item-thumb-img"/>
+            </div>
+            <!-- 标题和简介-->
+            <div class="item-body">
+              <h5 class="item-title">深拷贝和浅拷贝</h5>
+              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
+              <div class="item-meta">
+              <span class="date">
+                <i class="iconfont icon-clock"></i>
+                <span>2021/06/02 22:12</span>
+              </span>
+                <span class="views">
+                <i class="iconfont icon-view"></i>
+                <span>212</span>
+              </span>
+                <span class="comments">
+                <i class="iconfont icon-comment"></i>
+                <span>1</span>
+              </span>
+                <span class="likes">
+                <i class="iconfont icon-like"></i>
+                <span>0</span>
+              </span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
 
     </div>
-
+    <!--右侧内容-->
     <div id="aside" class="aside-container">
       <!--搜索框-->
       <div class="aside-search">
@@ -199,8 +391,61 @@
       <!--日历-->
       <Calendar/>
       <!--标签-->
+      <div class="aside-sticky-box">
+        <div class="aside-tag">
+          <ul class="aside-tag-list">
+            <li class="item">
+              <div class="title">
+              <span class="name">
+                  <span>1111</span>
+                  <span>(1)</span>
+                </span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="title">
+              <span class="name">
+                  <span>1111</span>
+                  <span>(1)</span>
+                </span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="title">
+              <span class="name">
+                  <span>1111</span>
+                  <span>(1)</span>
+                </span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="title">
+              <span class="name">
+                  <span>1111</span>
+                  <span>(1)</span>
+                </span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="title">
+              <span class="name">
+                  <span>1111</span>
+                  <span>(1)</span>
+                </span>
+              </div>
+            </li>
+            <li class="item">
+              <div class="title">
+              <span class="name">
+                  <span>1111</span>
+                  <span>(1)</span>
+                </span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
     </div>
-
   </div>
 </template>
 
@@ -252,6 +497,8 @@
   #index-page {
     display: -webkit-flex;
     display: flex;
+    flex-direction: row;
+    justify-content: space-between;
   }
 
   .nav-container {
@@ -314,6 +561,10 @@
         font-family: 'webfont' !important;
         letter-spacing: 0.5px;
         margin-bottom: $sm-gap;
+
+        &:hover {
+          color: $primary;
+        }
 
         .iconfont {
           width: 1em;
@@ -662,5 +913,105 @@
         }
       }
     }
+
+    /*标签*/
+    .aside-sticky-box {
+      $top-height: $header-height + $lg-gap;
+      $tool-height: 3rem;
+      position: sticky;
+      top: $top-height;
+      width: $aside-width;
+      margin-bottom: 1.236rem;
+      background-color: #eee;
+
+      > .aside-tag {
+        max-height: calc(
+          100vh - 88px - #{$top-height + $lg-gap + $lg-gap + $tool-height}
+        );
+        overflow-y: auto;
+      }
+
+      > .aside-tag {
+        width: 100%;
+        padding-left: $gap;
+        border-top: $gap solid transparent;
+        border-bottom: $gap solid transparent;
+
+        .empty-box {
+          padding-right: $gap;
+          padding-bottom: $gap;
+        }
+
+        .aside-tag-list {
+          list-style: none;
+          padding: 0;
+          margin: 0;
+          overflow: hidden;
+
+          .item {
+            display: inline-flex;
+            margin-right: $sm-gap;
+            margin-bottom: $gap;
+            height: 2em;
+            line-height: 2em;
+            font-size: $font-size-h6;
+            text-transform: capitalize;
+
+            &:last-child {
+              margin: 0;
+            }
+
+            &:hover {
+              .title {
+                .iconfont {
+                  background-color: $module-hover-bg;
+                }
+
+                .name {
+                  background-color: $module-hover-bg-darken-20;
+                  cursor: pointer;
+                }
+              }
+            }
+
+            .title {
+              display: flex;
+
+              .iconfont {
+                width: 2em;
+                text-align: center;
+                background-color: $module-hover-bg-opacity-3;
+              }
+
+              .name {
+                display: block;
+                padding: 0 $sm-gap;
+                background-color: $module-hover-bg;
+              }
+            }
+          }
+        }
+      }
+
+      > .aside-friendlink {
+        padding-left: $gap;
+        border-top: $gap solid transparent;
+        border-bottom: $gap solid transparent;
+
+        span {
+          font-size: 16px;
+        }
+
+        > .tag-items {
+          a {
+            display: inline-block;
+            padding: 5px;
+            border: #dfe6e9 solid 1px;
+            margin: 4px 2px 4px 0px;
+          }
+        }
+      }
+    }
+
   }
 </style>

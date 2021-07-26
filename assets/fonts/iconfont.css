@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2695663 */
-  src: url('iconfont.woff2?t=1627028275706') format('woff2'),
-       url('iconfont.woff?t=1627028275706') format('woff'),
-       url('iconfont.ttf?t=1627028275706') format('truetype');
+  src: url('iconfont.woff2?t=1627271529076') format('woff2'),
+       url('iconfont.woff?t=1627271529076') format('woff'),
+       url('iconfont.ttf?t=1627271529076') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,58 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-top:before {
+  content: "\e623";
+}
+
+.icon-bottom:before {
+  content: "\e624";
+}
+
+.icon-shenghuo:before {
+  content: "\e625";
+}
+
+.icon-jinrong:before {
+  content: "\e935";
+}
+
+.icon-vuejs:before {
+  content: "\e849";
+}
+
+.icon-xiaochengxu:before {
+  content: "\e63a";
+}
+
+.icon-java:before {
+  content: "\ebd8";
+}
+
+.icon-shoucang:before {
+  content: "\e610";
+}
+
+.icon-travel:before {
+  content: "\e626";
+}
+
+.icon-xingqiu:before {
+  content: "\e60f";
+}
+
+.icon-work:before {
+  content: "\e672";
+}
+
+.icon-search:before {
+  content: "\e60b";
+}
+
+.icon-github:before {
+  content: "\e601";
 }
 
 .icon-clock:before {
