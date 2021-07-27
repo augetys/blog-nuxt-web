@@ -8,3 +8,18 @@ export function getTags(data) {
   })
 }
 
+export function getArticles(data) {
+  return request({
+    url: '/blog/article/list',
+    method: 'post',
+    data: data
+  })
+}
+
+export function getArticlesById(id) {
+  return request({
+    url: '/blog/article/' + id,
+    method: 'get'
+  })
+}
+

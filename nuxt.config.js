@@ -29,7 +29,8 @@ module.exports = {
   css: [
     "~/assets/styles/global.scss",
     "~/assets/fonts/iconfont.css",
-    'element-ui/lib/theme-chalk/index.css'
+    'element-ui/lib/theme-chalk/index.css',
+    "highlight.js/styles/night-owl.css",
   ],
   /*
    ** Plugins to load before mounting the App
@@ -45,6 +46,8 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
+    { src: "~/plugins/marked" },
+    { src: "~/plugins/highlight" },
     { src: "~/plugins/canvas-nest", mode: "client" },
     { src: '@/assets/fonts/iconfont.js', ssr: false }
   ],

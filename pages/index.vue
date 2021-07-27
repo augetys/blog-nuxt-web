@@ -1,313 +1,68 @@
 <template>
-    <!--中间文章内容-->
-    <div id="main" class="main-container">
-      <!--轮播图-->
-      <div class="block">
-        <el-carousel :interval="4000" arrow="always" trigger="click" height="200px">
-          <el-carousel-item v-for="item in 4" :key="item">
-            <h3 class="small">{{ item }}</h3>
-          </el-carousel-item>
-        </el-carousel>
-      </div>
-
-      <div style="margin-top: 20px">
-        <!--文章列表-->
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin self">原创</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin hybrid">参考</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin other">转载</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin other">转载</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin other">转载</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin other">转载</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin other">转载</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin other">转载</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="article-list-item">
-          <div class="item-content">
-            <!-- 封面图-->
-            <div class="item-thumb">
-              <span class="item-oirigin other">转载</span>
-              <img class="item-thumb-img"/>
-            </div>
-            <!-- 标题和简介-->
-            <div class="item-body">
-              <h5 class="item-title">深拷贝和浅拷贝</h5>
-              <p class="item-description" style="-webkit-box-orient: vertical;">前端基本技能，面试必备</p>
-              <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>2021/06/02 22:12</span>
-              </span>
-                <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>212</span>
-              </span>
-                <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-                <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
+  <!--中间文章内容-->
+  <div id="main" class="main-container">
+    <!--轮播图-->
+    <div class="block">
+      <el-carousel :interval="4000" arrow="always" trigger="click" height="200px">
+        <el-carousel-item v-for="item in 4" :key="item">
+          <h3 class="small">{{ item }}</h3>
+        </el-carousel-item>
+      </el-carousel>
     </div>
+
+    <div style="margin-top: 20px">
+      <!--文章列表-->
+      <div class="article-list-item" v-for="(item,index) in articles" :key="item.id">
+        <div class="item-content">
+          <!-- 封面图-->
+          <div class="item-thumb">
+            <span class="item-oirigin self">原创</span>
+            <img class="item-thumb-img" :src="item.cover"/>
+          </div>
+          <!-- 标题和简介-->
+          <div class="item-body">
+            <h5 class="item-title"><nuxt-link :to="`/article/${item.id}`" v-text="item.title" /></h5>
+            <p class="item-description" style="-webkit-box-orient: vertical;">{{item.summary}}</p>
+            <div class="item-meta">
+              <span class="date">
+                <i class="iconfont icon-clock"></i>
+                <span>{{item.createTime}}</span>
+              </span>
+              <span class="views">
+                <i class="iconfont icon-view"></i>
+                <span>212</span>
+              </span>
+              <span class="comments">
+                <i class="iconfont icon-comment"></i>
+                <span>1</span>
+              </span>
+              <span class="likes">
+                <i class="iconfont icon-like"></i>
+                <span>0</span>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
 </template>
 
 <script>
+  import {getArticles} from "~/api/blog";
   export default {
-
+    data() {
+      return {
+        articles:[]
+      }
+    },
+    created() {
+      getArticles({pageSize:10,pageNum:1}).then(response => {
+        console.log("文章", response);
+        this.articles = response.data.list;
+      });
+    }
   }
 </script>
 
