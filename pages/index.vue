@@ -1,14 +1,7 @@
 <template>
   <!--中间文章内容-->
   <div id="main" class="main-container">
-    <!--轮播图-->
-    <div class="block">
-      <el-carousel :interval="4000" arrow="always" trigger="click" height="200px">
-        <el-carousel-item v-for="item in 4" :key="item">
-          <h3 class="small">{{ item }}</h3>
-        </el-carousel-item>
-      </el-carousel>
-    </div>
+    <Carousel />
 
     <div style="margin-top: 20px">
       <!--文章列表-->
@@ -21,7 +14,9 @@
           </div>
           <!-- 标题和简介-->
           <div class="item-body">
-            <h5 class="item-title"><nuxt-link :to="`/article/${item.id}`" v-text="item.title" /></h5>
+            <h5 class="item-title">
+              <nuxt-link :to="`/article/${item.id}`" v-text="item.title"/>
+            </h5>
             <p class="item-description" style="-webkit-box-orient: vertical;">{{item.summary}}</p>
             <div class="item-meta">
               <span class="date">
@@ -30,7 +25,7 @@
               </span>
               <span class="views">
                 <i class="iconfont icon-view"></i>
-                <span>212</span>
+                <span>{{item.clickCount}}</span>
               </span>
               <span class="comments">
                 <i class="iconfont icon-comment"></i>
@@ -45,20 +40,23 @@
         </div>
       </div>
     </div>
-
   </div>
 </template>
 
 <script>
   import {getArticles} from "~/api/blog";
+  import Carousel from "../components/common/Carousel";
   export default {
+    components:{
+      Carousel
+    },
     data() {
       return {
-        articles:[]
+        articles: []
       }
     },
     created() {
-      getArticles({pageSize:10,pageNum:1}).then(response => {
+      getArticles({pageSize: 10, pageNum: 1}).then(response => {
         console.log("文章", response);
         this.articles = response.data.list;
       });
@@ -70,23 +68,6 @@
 
   .main-container {
     width: 596px;
-  }
-
-  /*轮播图*/
-  .el-carousel__item h3 {
-    color: #475669;
-    font-size: 14px;
-    opacity: 0.75;
-    line-height: 150px;
-    margin: 0;
-  }
-
-  .el-carousel__item:nth-child(2n) {
-    background-color: #99a9bf;
-  }
-
-  .el-carousel__item:nth-child(2n+1) {
-    background-color: #d3dce6;
   }
 
   /*main*/

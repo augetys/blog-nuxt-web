@@ -5,7 +5,7 @@
         <div class="header-logo">
           <h1>Blog</h1>
         </div>
-        <span class="header-slogan">吾生也有涯，而知也无涯</span>
+        <span class="header-slogan">不以物喜，不以己悲</span>
       </div>
     </div>
   </header>

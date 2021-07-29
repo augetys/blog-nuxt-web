@@ -27,10 +27,12 @@ module.exports = {
   ** Global CSS
   */
   css: [
+    "~/assets/styles/github-markdown.css", // 引入样式解决markdown转换成html，样式显示问题
     "~/assets/styles/global.scss",
     "~/assets/fonts/iconfont.css",
     'element-ui/lib/theme-chalk/index.css',
-    "highlight.js/styles/night-owl.css",
+    "highlight.js/styles/atelier-forest-dark.css",
+
   ],
   /*
    ** Plugins to load before mounting the App
@@ -46,7 +48,6 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    { src: "~/plugins/marked" },
     { src: "~/plugins/highlight" },
     { src: "~/plugins/canvas-nest", mode: "client" },
     { src: '@/assets/fonts/iconfont.js', ssr: false }

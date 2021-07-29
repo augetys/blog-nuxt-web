@@ -23,3 +23,40 @@ export function getArticlesById(id) {
   })
 }
 
+export function getArticlesByCategoryId(data) {
+  return request({
+    url: '/blog/article/list',
+    method: 'post',
+    data: data
+  })
+}
+
+export function getArticlesByDate(data) {
+  return request({
+    url: '/blog/article/list',
+    method: 'post',
+    data: data
+  })
+}
+
+export function getNav() {
+  return request({
+    url: '/blog/nav/findAll',
+    method: 'get'
+  })
+}
+
+export function getLoop() {
+  return request({
+    url: '/blog/loop/findAll',
+    method: 'get'
+  })
+}
+
+export function getHotArticle() {
+  return request({
+    url: '/blog/article/getHotArticle',
+    method: 'get'
+  })
+}
+

@@ -31,7 +31,7 @@
       <ul class="aside-article-list">
         <li v-for="item in articles" :key="item.id" class="item">
           <span class="index"/>
-          <nuxt-link to="/" class="title">
+          <nuxt-link :to="`/article/${item.id}`" class="title">
             <span v-text="item.title"/>
           </nuxt-link>
         </li>
@@ -60,7 +60,7 @@
 </template>
 
 <script>
-  import {getTags} from "~/api/blog";
+  import {getTags,getHotArticle} from "~/api/blog";
   import Calendar from "~/components/common/Calendar.vue";
 
   export default {
@@ -73,38 +73,17 @@
         keyword: "",
         hotlist: "热火朝天",
         tags:[],
-        articles: [
-          {
-            "id": 1,
-            "title": "111111"
-          },
-          {
-            "id": 2,
-            "title": "222222"
-          },
-          {
-            "id": 3,
-            "title": "333333"
-          },
-          {
-            "id": 4,
-            "title": "44444"
-          },
-          {
-            "id": 5,
-            "title": "555555"
-          },
-          {
-            "id": 6,
-            "title": "6666666"
-          }
-        ]
+        articles: []
       }
     },
     created() {
       getTags({name:''}).then(response => {
         console.log("标签", response);
         this.tags = response.data;
+      });
+      getHotArticle().then(response => {
+        console.log("热门文章", response);
+        this.articles = response.data;
       });
     }
   }

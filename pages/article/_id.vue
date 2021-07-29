@@ -12,7 +12,7 @@
       <div key="knowledge" class="knowledge">
         <template>
           <h2 class="title">{{articleDetail.title}}</h2>
-          <div id="article-content" key="article-content" class="content" v-html="articleDetail.content"></div>
+          <div id="article-content" key="article-content" class="content markdown-body" v-highlight v-html="articleDetail.content"></div>
         </template>
       </div>
 
@@ -22,7 +22,6 @@
 
 <script>
   import {getArticlesById} from "~/api/blog";
-  import marked from "~/plugins/marked";
   export default {
     layout: 'empty',
     name: "ArticleDetail",
@@ -315,21 +314,6 @@
             font-size: $code-font-size;
             background-color: rgba($black, 0.8);
 
-            &:before {
-              color: $white;
-              content: attr(data-lang) " CODE";
-              height: $code-header-height;
-              line-height: $code-header-height;
-              position: absolute;
-              top: 0;
-              left: 0;
-              width: 100%;
-              font-weight: 700;
-              background-color: rgba(68, 68, 68, 0.9);
-              display: block;
-              text-transform: uppercase;
-              text-align: center;
-            }
 
             > .code-lines {
               position: absolute;
@@ -381,6 +365,7 @@
               background-color: transparent;
             }
           }
+
         }
 
         @keyframes readmorebtn {

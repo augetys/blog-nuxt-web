@@ -1,54 +1,32 @@
 <template>
   <!--左侧导航-->
   <div id="nav" class="nav-container aside-nav">
+    <!--    link-active-->
     <nav class="nav-list">
-      <nuxt-link :to="'/'" class="item link-active">
-        <i class="iconfont icon-home"></i>
-        <span class="text">醉花阴</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item">
-        <i class="iconfont icon-code"></i>
-        <span class="text">无妄海</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item">
-        <i class="iconfont icon-think"></i>
-        <span class="text">清平乐</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item">
-        <i class="iconfont icon-life"></i>
-        <span class="text">如梦令</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item">
-        <i class="iconfont icon-date"></i>
-        <span class="text">荏苒</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item">
-        <i class="iconfont icon-photo"></i>
-        <span class="text">琉璃镜</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item">
-        <i class="iconfont icon-file"></i>
-        <span class="text">藏经阁</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item">
-        <i class="iconfont icon-personInfo"></i>
-        <span class="text">山外小楼</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item guestbook">
-        <i class="iconfont icon-guestbook"></i>
-        <span class="text">天命风流</span>
-      </nuxt-link>
-      <nuxt-link to="/" class="item guestbook">
-        <i class="iconfont icon-video"></i>
-        <span class="text">海市蜃楼</span>
+      <nuxt-link v-for="(item,index) in navs" :key="index" :to="`${item.path}`" class="item">
+        <i :class="`${item.icon}`" class="iconfont"></i>
+        <span class="text">{{item.name}}</span>
       </nuxt-link>
     </nav>
   </div>
 </template>
 
 <script>
+  import {getNav} from "~/api/blog";
+
   export default {
-    name: "PcNav"
+    name: "PcNav",
+    data() {
+      return {
+        navs: []
+      }
+    },
+    created() {
+      getNav().then(response => {
+        console.log("导航", response);
+        this.navs = response.data;
+      });
+    }
   }
 </script>
 
@@ -57,6 +35,7 @@
     margin-right: 10px;
     width: 160px;
   }
+
   /*nav*/
   .aside-nav {
     width: $navbar-width;
