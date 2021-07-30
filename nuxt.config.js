@@ -17,12 +17,13 @@ module.exports = {
       { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
     ]
   },
-
   /*
   ** Customize the progress-bar color
   */
   loading: { color: '#FFFFFF' },
-
+  router:{
+    base:'/node'
+  },
   /*
   ** Global CSS
   */

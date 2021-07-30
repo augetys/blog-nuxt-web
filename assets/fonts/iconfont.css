@@ -1,8 +1,8 @@
 @font-face {
   font-family: "iconfont"; /* Project id 2695663 */
-  src: url('iconfont.woff2?t=1627271529076') format('woff2'),
-       url('iconfont.woff?t=1627271529076') format('woff'),
-       url('iconfont.ttf?t=1627271529076') format('truetype');
+  src: url('iconfont.woff2?t=1627638312110') format('woff2'),
+       url('iconfont.woff?t=1627638312110') format('woff'),
+       url('iconfont.ttf?t=1627638312110') format('truetype');
 }
 
 .iconfont {
@@ -11,6 +11,34 @@
   font-style: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-fapiao:before {
+  content: "\e691";
+}
+
+.icon-hegezheng:before {
+  content: "\e692";
+}
+
+.icon-maifang:before {
+  content: "\e697";
+}
+
+.icon-mudedi:before {
+  content: "\e698";
+}
+
+.icon-interview:before {
+  content: "\e636";
+}
+
+.icon-java:before {
+  content: "\e60c";
+}
+
+.icon-linux:before {
+  content: "\ebf7";
 }
 
 .icon-top:before {
@@ -25,20 +53,16 @@
   content: "\e625";
 }
 
-.icon-jinrong:before {
+.icon-banking:before {
   content: "\e935";
 }
 
-.icon-vuejs:before {
+.icon-vue:before {
   content: "\e849";
 }
 
 .icon-xiaochengxu:before {
   content: "\e63a";
-}
-
-.icon-java:before {
-  content: "\ebd8";
 }
 
 .icon-shoucang:before {
