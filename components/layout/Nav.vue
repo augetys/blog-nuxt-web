@@ -13,20 +13,20 @@
 
 <script>
   import {getNav} from "~/api/blog";
-
+  import { mapState } from "vuex";
   export default {
     name: "PcNav",
-    data() {
-      return {
-        navs: []
-      }
+    computed: {
+      ...mapState({
+        navs: state => state.nav.data,
+      })
     },
-    created() {
-      getNav().then(response => {
-        console.log("导航", response);
-        this.navs = response.data;
-      });
-    }
+    // created() {
+    //   getNav().then(response => {
+    //     console.log("导航", response);
+    //     this.navs = response.data;
+    //   });
+    // }
   }
 </script>
 

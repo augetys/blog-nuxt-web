@@ -35,3 +35,8 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 
 https://blog.jijian.link/2020-12-09/nginx-proxy-nuxtjs-404/
 nginx 代理二级目录访问 nuxtjs 项目 404 错误
+
+asyncData必须在 page component里才会被执行，指的是page目录
+非page component 使用vuex
+
+<client-only> 此组件用于仅在客户端渲染其他组件

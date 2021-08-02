@@ -51,15 +51,14 @@
       Carousel
     },
     data() {
-      return {
-        articles: []
-      }
+
     },
-    created() {
-      getArticles({pageSize: 10, pageNum: 1}).then(response => {
-        console.log("文章", response);
-        this.articles = response.data.list;
-      });
+    async asyncData({ store, route }) {
+      let response = await getArticles({pageSize: 10, pageNum: 1});
+      console.log("文章", response);
+      return {
+        articles: response.data.list
+      }
     }
   }
 </script>
