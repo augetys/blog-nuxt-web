@@ -2,62 +2,23 @@
   <!--中间文章内容-->
   <div id="main" class="main-container">
     <Carousel />
-
-    <div style="margin-top: 20px">
-      <!--文章列表-->
-      <div class="article-list-item" v-for="(item,index) in articles" :key="item.id">
-        <div class="item-content">
-          <!-- 封面图-->
-          <div class="item-thumb">
-            <span class="item-oirigin self">原创</span>
-            <img class="item-thumb-img" :src="item.cover"/>
-          </div>
-          <!-- 标题和简介-->
-          <div class="item-body">
-            <h5 class="item-title">
-              <nuxt-link :to="`/article/${item.id}`" v-text="item.title"/>
-            </h5>
-            <p class="item-description" style="-webkit-box-orient: vertical;">{{item.summary}}</p>
-            <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>{{item.createTime}}</span>
-              </span>
-              <span class="views">
-                <i class="iconfont icon-view"></i>
-                <span>{{item.clickCount}}</span>
-              </span>
-              <span class="comments">
-                <i class="iconfont icon-comment"></i>
-                <span>1</span>
-              </span>
-              <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-              </span>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
+    <article-list :article="articles"  />
   </div>
 </template>
 
 <script>
-  import {getArticles} from "~/api/blog";
+  import { mapState } from "vuex";
   import Carousel from "../components/common/Carousel";
+  import ArticleList from "~/components/common/List";
   export default {
     components:{
-      Carousel
+      Carousel,
+      ArticleList
     },
-    data() {
-
-    },
-    async asyncData({ store, route }) {
-      let response = await getArticles({pageSize: 10, pageNum: 1});
-      return {
-        articles: response.data.list
-      }
+    computed: {
+      ...mapState({
+        articles: state => state.articles.data,
+      })
     }
   }
 </script>
