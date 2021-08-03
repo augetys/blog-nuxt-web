@@ -20,6 +20,9 @@
       <li v-for="(day, index) in weeksText" :key="index">{{ day }}</li>
     </ul>
     <!-- 日期 -->
+    <div v-if="!days.length" class="days-loading">
+      <loading class="loading"/>
+    </div>
     <ul class="days">
       <li v-for="(day, index) in days" :key="index">
         <!--本月-->
@@ -45,161 +48,166 @@
 </template>
 
 <script>
-export default {
-  name: "PcAsideCalendar",
-  data() {
-    return {
-      currentDay: 1,
-      currentMonth: 1,
-      currentYear: 1970,
-      currentWeek: 1,
-      days: [],
-      year:"年",
-      month:"月",
-      day:"日",
-      weeksText:["一", "二", "三", "四", "五", "六", "七"]
-    };
-  },
-  methods: {
-    initDate(current) {
-      const date = current ? new Date(current) : new Date();
-      this.currentDay = date.getDate();
-      this.currentYear = date.getFullYear();
-      this.currentMonth = date.getMonth() + 1;
-      this.currentWeek = date.getDay();
-      if (this.currentWeek == 0) this.currentWeek = 7;
-      const strting = this.formatDate(
-        this.currentYear,
-        this.currentMonth,
-        this.currentDay
-      );
-      // console.log("today:" + strting + "," + this.currentWeek)
-      this.days.length = 0;
-      // 今天是周日，放在第一行第7个位置，前面6个
-      for (let i = this.currentWeek - 1; i >= 0; i--) {
-        const day = new Date(strting);
-        day.setDate(day.getDate() - i);
-        // console.log("y:" + day.getDate())
-        this.days.push(day);
+  import Loading from "~/components/common/Loading.vue";
+  export default {
+    name: "PcAsideCalendar",
+    components:{
+      Loading
+    },
+    data() {
+      return {
+        currentDay: 1,
+        currentMonth: 1,
+        currentYear: 1970,
+        currentWeek: 1,
+        days: [],
+        year: "年",
+        month: "月",
+        day: "日",
+        weeksText: ["一", "二", "三", "四", "五", "六", "七"]
+      };
+    },
+    methods: {
+      initDate(current) {
+        const date = current ? new Date(current) : new Date();
+        this.currentDay = date.getDate();
+        this.currentYear = date.getFullYear();
+        this.currentMonth = date.getMonth() + 1;
+        this.currentWeek = date.getDay();
+        if (this.currentWeek == 0) this.currentWeek = 7;
+        const strting = this.formatDate(
+          this.currentYear,
+          this.currentMonth,
+          this.currentDay
+        );
+        // console.log("today:" + strting + "," + this.currentWeek)
+        this.days.length = 0;
+        // 今天是周日，放在第一行第7个位置，前面6个
+        for (let i = this.currentWeek - 1; i >= 0; i--) {
+          const day = new Date(strting);
+          day.setDate(day.getDate() - i);
+          // console.log("y:" + day.getDate())
+          this.days.push(day);
+        }
+        for (let i = 1; i <= 35 - this.currentWeek; i++) {
+          const day = new Date(strting);
+          day.setDate(day.getDate() + i);
+          this.days.push(day);
+        }
+      },
+      pickPrevMonth(year, month) {
+        //  setDate(0); 上月最后一天
+        //  setDate(-1); 上月倒数第二天
+        //  setDate(dx) 参数dx为 上月最后一天的前后dx天
+        const day = new Date(this.formatDate(year, month, 1));
+        day.setDate(0);
+        this.initDate(this.formatDate(day.getFullYear(), day.getMonth() + 1, 1));
+      },
+      pickNextMonth(year, month) {
+        const day = new Date(this.formatDate(year, month, 1));
+        day.setDate(35);
+        this.initDate(this.formatDate(day.getFullYear(), day.getMonth() + 1, 1));
+      },
+      // 返回 类似 2016-01-02 格式的字符串
+      formatDate(year, month, day) {
+        month = month < 10 ? `0${month}` : month;
+        day = day < 10 ? `0${day}` : day;
+        return `${year}-${month}-${day}`;
       }
-      for (let i = 1; i <= 35 - this.currentWeek; i++) {
-        const day = new Date(strting);
-        day.setDate(day.getDate() + i);
-        this.days.push(day);
-      }
     },
-    pickPrevMonth(year, month) {
-      //  setDate(0); 上月最后一天
-      //  setDate(-1); 上月倒数第二天
-      //  setDate(dx) 参数dx为 上月最后一天的前后dx天
-      const day = new Date(this.formatDate(year, month, 1));
-      day.setDate(0);
-      this.initDate(this.formatDate(day.getFullYear(), day.getMonth() + 1, 1));
-    },
-    pickNextMonth(year, month) {
-      const day = new Date(this.formatDate(year, month, 1));
-      day.setDate(35);
-      this.initDate(this.formatDate(day.getFullYear(), day.getMonth() + 1, 1));
-    },
-    // 返回 类似 2016-01-02 格式的字符串
-    formatDate(year, month, day) {
-      month = month < 10 ? `0${month}` : month;
-      day = day < 10 ? `0${day}` : day;
-      return `${year}-${month}-${day}`;
+    mounted() {
+      this.initDate(null);
     }
-  },
-  mounted() {
-    this.initDate(null);
-  }
-};
+  };
 </script>
 
 <style lang="scss" scoped>
-.calendar-box {
-  min-height: 17em;
-  margin-bottom: 1.236rem;
-  background-color: #eee;
-  padding: 1rem;
-  > .months {
-    padding: 0;
-    margin-bottom: $gap;
-    overflow: hidden;
-    display: flex;
-    justify-content: space-between;
+  .calendar-box {
+    min-height: 17em;
+    margin-bottom: 1.236rem;
+    background-color: #eee;
+    padding: 1rem;
 
-    .item {
+    > .months {
+      padding: 0;
+      margin-bottom: $gap;
+      overflow: hidden;
+      display: flex;
+      justify-content: space-between;
+
+      .item {
+        height: 2em;
+        line-height: 2em;
+        text-align: center;
+
+        &.arrow {
+          width: 2em;
+          background-color: $module-hover-bg;
+          cursor: pointer;
+
+          &:hover {
+            background-color: $module-hover-bg-darken-10;
+          }
+        }
+      }
+    }
+
+    > .days,
+    > .weekdays {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+      overflow: hidden;
+      margin-bottom: $sm-gap;
+
+      > li {
+        display: block;
+        float: left;
+        width: 14.28%;
+        text-align: center;
+      }
+    }
+
+    > .weekdays {
       height: 2em;
       line-height: 2em;
-      text-align: center;
+    }
 
-      &.arrow {
-        width: 2em;
-        background-color: $module-hover-bg;
-        cursor: pointer;
+    > .days-loading {
+      width: 100%;
+      height: 14rem;
+    }
 
-        &:hover {
-          background-color: $module-hover-bg-darken-10;
+    > .days {
+      min-height: 10em;
+      margin-bottom: 0;
+      position: relative;
+
+      > li {
+        line-height: 2.5em;
+
+        > .other-month {
+          opacity: 0.3;
+          cursor: initial;
         }
-      }
-    }
-  }
 
-  > .days,
-  > .weekdays {
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    overflow: hidden;
-    margin-bottom: $sm-gap;
-
-    > li {
-      display: block;
-      float: left;
-      width: 14.28%;
-      text-align: center;
-    }
-  }
-
-  > .weekdays {
-    height: 2em;
-    line-height: 2em;
-  }
-
-  > .days-loading {
-    width: 100%;
-    height: 14rem;
-  }
-
-  > .days {
-    min-height: 10em;
-    margin-bottom: 0;
-    position: relative;
-
-    > li {
-      line-height: 2.5em;
-
-      > .other-month {
-        opacity: 0.3;
-        cursor: initial;
-      }
-
-      > .item {
-        display: block;
-        border-radius: 100%;
-
-        > a {
+        > .item {
           display: block;
-        }
+          border-radius: 100%;
 
-        &:hover {
-          background-color: $module-hover-bg-opacity-3;
-        }
+          > a {
+            display: block;
+          }
 
-        &.active {
-          background-color: $module-hover-bg;
+          &:hover {
+            background-color: $module-hover-bg-opacity-3;
+          }
+
+          &.active {
+            background-color: $module-hover-bg;
+          }
         }
       }
     }
   }
-}
 </style>

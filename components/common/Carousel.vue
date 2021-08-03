@@ -10,19 +10,13 @@
 </template>
 
 <script>
-  import {getLoop} from "~/api/blog";
+  import { mapState } from "vuex";
   export default {
     name: "Carousel",
-    data(){
-      return{
-        loop: []
-      }
-    },
-    created() {
-      getLoop({pageSize: 10, pageNum: 1}).then(response => {
-        console.log("轮播图", response);
-        this.loop = response.data;
-      });
+    computed: {
+      ...mapState({
+        loop: state => state.loop.data,
+      })
     }
   }
 </script>

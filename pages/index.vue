@@ -55,7 +55,6 @@
     },
     async asyncData({ store, route }) {
       let response = await getArticles({pageSize: 10, pageNum: 1});
-      console.log("文章", response);
       return {
         articles: response.data.list
       }

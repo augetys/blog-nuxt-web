@@ -25,7 +25,7 @@
 
       <p class="title">
         <i class="iconfont icon-hotfill"/>
-        <strong v-text="hotlist"/>
+        <strong v-text="hotTitle"/>
       </p>
 
       <ul class="aside-article-list">
@@ -60,9 +60,8 @@
 </template>
 
 <script>
-  import {getTags,getHotArticle} from "~/api/blog";
   import Calendar from "~/components/common/Calendar.vue";
-
+  import { mapState } from "vuex";
   export default {
     name: "PcAside",
     components: {
@@ -71,20 +70,14 @@
     data() {
       return {
         keyword: "",
-        hotlist: "热火朝天",
-        tags:[],
-        articles: []
+        hotTitle: "热火朝天"
       }
     },
-    created() {
-      getTags({name:''}).then(response => {
-        console.log("标签", response);
-        this.tags = response.data;
-      });
-      getHotArticle().then(response => {
-        console.log("热门文章", response);
-        this.articles = response.data;
-      });
+    computed: {
+      ...mapState({
+        tags: state => state.tags.data,
+        articles: state => state.articles.data,
+      })
     }
   }
 </script>
