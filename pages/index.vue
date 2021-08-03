@@ -65,7 +65,7 @@
 <style lang="scss" scoped>
 
   .main-container {
-    width: 596px;
+    width: 594px;
   }
 
   /*main*/

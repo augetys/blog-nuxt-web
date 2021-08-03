@@ -1,8 +1,10 @@
 <template>
   <div id="app-main">
     <client-only>
-      <background/>
-      <small-tool/>
+      <figure class="widget">
+        <background/>
+        <small-tool/>
+      </figure>
     </client-only>
     <Header/>
     <div id="index-page" class="container">
@@ -15,12 +17,12 @@
 </template>
 
 <script>
-  import Header from "~/components/layout/Header.vue";
-  import Footer from "~/components/layout/Footer.vue";
-  import Nav from "~/components/layout/Nav.vue";
-  import Aside from "~/components/layout/Aside.vue";
-  import Background from "~/components/layout/Background.vue";
-  import SmallTool from "../common/Smalltool";
+  import Header from "~/components/layout/pc/Header.vue";
+  import Footer from "~/components/layout/pc/Footer.vue";
+  import Nav from "~/components/layout/pc/Nav.vue";
+  import Aside from "~/components/layout/pc/Aside.vue";
+  import Background from "~/components/common/Background.vue";
+  import SmallTool from "../../common/Smalltool";
 
   export default {
     name: "PcMain",

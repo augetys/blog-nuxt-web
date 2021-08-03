@@ -33,7 +33,7 @@ module.exports = {
     "~/assets/fonts/iconfont.css",
     'element-ui/lib/theme-chalk/index.css',
     "highlight.js/styles/atelier-forest-dark.css",
-
+    'swiper/css/swiper.css'
   ],
   /*
    ** Plugins to load before mounting the App
@@ -51,7 +51,8 @@ module.exports = {
     '@/plugins/element-ui',
     { src: "~/plugins/highlight" },
     { src: "~/plugins/canvas-nest", mode: "client" },
-    { src: '@/assets/fonts/iconfont.js', ssr: false }
+    { src: '@/assets/fonts/iconfont.js', ssr: false },
+    { src: '@/plugins/swiper', ssr: false }
   ],
 
   /*

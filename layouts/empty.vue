@@ -11,9 +11,9 @@
 </template>
 
 <script>
-  import Header from "~/components/layout/Header.vue";
-  import Footer from "~/components/layout/Footer.vue";
-  import Background from "~/components/layout/Background.vue";
+  import Header from "~/components/layout/pc/Header.vue";
+  import Footer from "~/components/layout/pc/Footer.vue";
+  import Background from "~/components/common/Background.vue";
   import SmallTool from "~/components/common/Smalltool";
 
   export default {
