@@ -17,7 +17,7 @@
   import SmallTool from "~/components/common/Smalltool";
 
   export default {
-    name: "empty",
+    name: "articleDetail",
     components: {
       Header,
       Footer,

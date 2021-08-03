@@ -9,7 +9,10 @@
     <Header/>
     <div id="index-page" class="container">
       <Nav></Nav>
-      <Nuxt/>
+      <div id="main" class="main-container">
+        <Carousel />
+        <Nuxt/>
+      </div>
       <Aside></Aside>
     </div>
     <Footer/>
@@ -23,10 +26,11 @@
   import Aside from "~/components/layout/pc/Aside.vue";
   import Background from "~/components/common/Background.vue";
   import SmallTool from "../../common/Smalltool";
-
+  import Carousel from "../../common/Carousel";
   export default {
     name: "PcMain",
     components: {
+      Carousel,
       Background,
       Header,
       Footer,
@@ -41,7 +45,9 @@
   #app-main {
     padding-top: 6.236rem;
   }
-
+  .main-container {
+    width: 594px;
+  }
   /*首页布局*/
   #index-page {
     display: -webkit-flex;

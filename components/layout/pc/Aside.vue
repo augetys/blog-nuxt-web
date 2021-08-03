@@ -29,7 +29,7 @@
       </p>
 
       <ul class="aside-article-list">
-        <li v-for="item in articles" :key="item.id" class="item">
+        <li v-for="item in hotArticles" :key="item.id" class="item">
           <span class="index"/>
           <nuxt-link :to="`/article/${item.id}`" class="title">
             <span v-text="item.title"/>
@@ -76,7 +76,7 @@
     computed: {
       ...mapState({
         tags: state => state.tags.data,
-        articles: state => state.articles.data,
+        hotArticles: state => state.hotArticles.data,
       })
     }
   }

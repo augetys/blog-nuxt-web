@@ -7,50 +7,58 @@ Vue.use(Vuex)
 const state = {
   api: 'http://localhost:8800',
   nav: {},
-  tags:{},
-  loop:{},
-  articles:{}
+  tags: {},
+  loop: {},
+  hotArticles: {},
+  articles: {}
 };
 
 const mutations = {
   // 侧边栏导航
-  setNav(state,data){
+  setNav(state, data) {
     state.nav = data
   },
   // 标签
-  setTags(state,data){
+  setTags(state, data) {
     state.tags = data
   },
   // 轮播图
-  setLoop(state,data){
+  setLoop(state, data) {
     state.loop = data
   },
   // 热门文章
-  setArticles(state,data){
+  setHotArticles(state, data) {
+    state.hotArticles = data
+  },
+  // 首页文章
+  setArticles(state, data) {
     state.articles = data
   }
 };
 
-const getters = {
-};
+const getters = {};
 
 const actions = {
-  async nuxtServerInit({commit,state,req}) {
+  async nuxtServerInit({commit, state, req}) {
     // 产品导航
     let nav = await axios(`${state.api}/blog/nav/findAll`);
-    commit('setNav',nav.data);
+    commit('setNav', nav.data);
 
     // 标签
-    let tags = await axios.post(`${state.api}/blog/tag/findAll`,{});
-    commit('setTags',tags.data);
+    let tags = await axios.post(`${state.api}/blog/tag/findAll`, {});
+    commit('setTags', tags.data);
 
     // 轮播图
     let loop = await axios(`${state.api}/blog/loop/findAll`);
-    commit('setLoop',loop.data);
+    commit('setLoop', loop.data);
 
     // 热门文章
-    let articles = await axios(`${state.api}/blog/article/getHotArticle`);
-    commit('setArticles',articles.data);
+    let hotArticles = await axios(`${state.api}/blog/article/getHotArticle`);
+    commit('setHotArticles', hotArticles.data);
+
+    // 首页文章
+    let articles = await axios.post(`${state.api}/blog/article/list`, {pageSize: 10, pageNum: 1});
+    commit('setArticles', articles.data);
   }
 };
 

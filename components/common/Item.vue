@@ -13,22 +13,26 @@
         </h5>
         <p class="item-description" style="-webkit-box-orient: vertical;">{{article.summary}}</p>
         <div class="item-meta">
-              <span class="date">
-                <i class="iconfont icon-clock"></i>
-                <span>{{article.createTime}}</span>
-              </span>
+          <span class="date">
+            <i class="iconfont icon-clock"></i>
+            <span>{{article.createTime}}</span>
+          </span>
           <span class="views">
                 <i class="iconfont icon-view"></i>
                 <span>{{article.clickCount}}</span>
-              </span>
+          </span>
           <span class="comments">
                 <i class="iconfont icon-comment"></i>
                 <span>1</span>
-              </span>
+          </span>
           <span class="likes">
                 <i class="iconfont icon-like"></i>
                 <span>0</span>
-              </span>
+          </span>
+          <span class="categories">
+            <i class="iconfont icon-home"></i>
+            <span>醉花阴</span>
+          </span>
         </div>
       </div>
     </div>
