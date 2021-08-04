@@ -10,8 +10,7 @@ const state = {
   tags: {},
   loop: {},
   hotArticles: {},
-  articles: {},
-  categoryData: {}
+  articles: {}
 };
 
 const mutations = {
@@ -34,10 +33,6 @@ const mutations = {
   // 首页文章
   setArticles(state, data) {
     state.articles = data
-  },
-  // 首页文章
-  setCategoryData(state, data) {
-    state.categoryData = data
   }
 };
 
@@ -66,12 +61,12 @@ const actions = {
     commit('setArticles', articles.data);
   },
 
-  // 获取文章列表
-  fetchList({commit}, params = {}) {
-    axios.post(`${state.api}/blog/article/findByCategory`, {categoryId: params.category,pageSize: 10, pageNum: 1}).then(response => {
-      commit('setCategoryData', response.data.data);
-    })
-  }
+  // // 获取文章列表
+  // fetchList({commit}, params = {}) {
+  //   axios.post(`${state.api}/blog/article/findByCategory`, {categoryId: params.category,pageSize: 10, pageNum: 1}).then(response => {
+  //     commit('setCategoryData', response.data.data);
+  //   })
+  // }
 };
 
 const store = () => new Vuex.Store({

@@ -6,19 +6,15 @@
 
 <script>
   import ArticleList from "~/components/common/List";
-  import { mapState } from "vuex";
+  import {getArticlesByCategory} from "~/api/blog";
   export default {
     name: "category",
     components:{
       ArticleList
     },
-    fetch({ store, params }) {
-      return store.dispatch("fetchList", params);
-    },
-    computed: {
-      ...mapState({
-        article: state => state.categoryData.list
-      })
+    async asyncData ({ params }) {
+      const res = await getArticlesByCategory({categoryId:params.id,pageSize:10,pageNum:1})
+      return {article: res.data.list}
     }
   }
 </script>
