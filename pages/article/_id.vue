@@ -3,8 +3,8 @@
     <div ref="detail" class="detail">
 
       <transition name="module" mode="out-in">
-        <div class="oirigin hybrid">
-          <span>参考</span>
+        <div class="oirigin" :class="originClass">
+          <span>{{originText }}</span>
         </div>
       </transition>
 
@@ -12,7 +12,8 @@
       <div key="knowledge" class="knowledge">
         <template>
           <h2 class="title">{{articleDetail.title}}</h2>
-          <div id="article-content" key="article-content" class="content markdown-body" v-highlight v-html="articleDetail.content"></div>
+          <div id="article-content" key="article-content" class="content markdown-body" v-highlight
+               v-html="articleDetail.content"></div>
         </template>
       </div>
 
@@ -22,12 +23,31 @@
 
 <script>
   import {getArticlesById} from "~/api/blog";
+  import {OriginState} from "~/constants/system";
   export default {
-    layout: 'empty',
+    layout: 'articleDetail',
     name: "ArticleDetail",
     data() {
       return {
         articleDetail: ''
+      }
+    },
+    computed: {
+      originText() {
+        if (this.articleDetail.isOriginal === 1) {
+          return OriginState.OriginalText;
+        }
+        if (this.articleDetail.isOriginal === 0) {
+          return OriginState.ReprintText;
+        }
+      },
+      originClass() {
+        if (this.articleDetail.isOriginal) {
+          return "self";
+        }
+        if (this.articleDetail.isOriginal !== OriginState.Reprint) {
+          return "other";
+        }
       }
     },
     created() {

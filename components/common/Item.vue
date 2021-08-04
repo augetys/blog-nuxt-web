@@ -40,6 +40,8 @@
 </template>
 
 <script>
+  import {OriginState} from "~/constants/system";
+
   export default {
     name: "Item",
     props: {
@@ -47,20 +49,19 @@
     },
     computed: {
       originText() {
-        if (this.article.origin === 1) {
-          return "原创";
+        if (this.article.isOriginal === 1) {
+          return OriginState.OriginalText;
         }
-        if (this.article.origin === 0) {
-          return "转载";
+        if (this.article.isOriginal === 0) {
+          return OriginState.ReprintText;
         }
-        return "-";
       },
       originClass() {
-        if (this.article.origin === 1) {
+        if (this.article.isOriginal) {
           return "self";
         }
-        if (this.article.origin === 0) {
-          return "hybrid";
+        if (this.article.isOriginal !== OriginState.Reprint) {
+          return "other";
         }
       }
     }

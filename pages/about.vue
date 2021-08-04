@@ -3,7 +3,9 @@
     <div class="about-me">
       <div class="description">
         <div class="item">
-          <i class="iconfont icon-introduction" style="color:red"/>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-introduction"></use>
+          </svg>
           <p class="bio">
           <span>
            一杯茶，一包烟，一个Bug改一天
@@ -12,27 +14,35 @@
         </div>
 
         <div class="item">
-          <i class="iconfont icon-personality" style="color:blue"></i>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-personality"></use>
+          </svg>
           <span>
            酒池肉林、日夜笙歌、依翠偎红、五音六律、目营心匠、桀骜不羁
           </span>
         </div>
 
         <div class="item">
-          <i class="iconfont icon-motto" style="color:green"/>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-motto"></use>
+          </svg>
           <span class="music">
-            路为纸，地成册，行作笔，心当墨；思无界，行有疆
+            路为纸，地成册，行作笔，心当墨，思无界，行有疆
           </span>
         </div>
 
         <div class="item">
-          <i class="iconfont icon-hobby" style="color:pink"/>
-          <span class="like-text">武侠古风，二次元，跑步,游戏</span>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-hobby"></use>
+          </svg>
+          <span class="like-text">武侠古风，二次元，跑步，游戏</span>
         </div>
 
         <div class="item">
-          <i class="iconfont icon-address" style="color:#33ff33"/>
-          <a href="#" class="address">湖北 , 武汉</a>
+          <svg class="icon" aria-hidden="true">
+            <use xlink:href="#icon-address"></use>
+          </svg>
+          <a class="address">湖北 , 武汉</a>
         </div>
 
       </div>
@@ -72,13 +82,13 @@
             margin-bottom: 0;
           }
 
-          > .iconfont {
-            width: 2em;
+          > .icon {
+            width: 1.4em;
+            height: 1.4em;
             margin-right: 1em;
-            display: inline-block;
-            font-size: $font-size-h4;
-            text-align: center;
-            color: $text-dividers;
+            vertical-align: -0.3em;
+            fill: currentColor;
+            overflow: hidden;
 
             &.icon-social {
               color: #ffa800;
