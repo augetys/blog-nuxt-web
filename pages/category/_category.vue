@@ -5,16 +5,20 @@
 </template>
 
 <script>
-  import ArticleList from "~/components/common/list";
+  import ArticleList from "~/components/common/List";
+  import { mapState } from "vuex";
   export default {
-    name: "_category",
+    name: "category",
     components:{
       ArticleList
     },
+    fetch({ store, params }) {
+      return store.dispatch("fetchList", params);
+    },
     computed: {
-      article() {
-        return []
-      }
+      ...mapState({
+        article: state => state.categoryData.list
+      })
     }
   }
 </script>

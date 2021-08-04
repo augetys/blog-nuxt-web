@@ -25,12 +25,15 @@
   import {getArticlesById} from "~/api/blog";
   import {OriginState} from "~/constants/system";
   export default {
-    layout: 'articleDetail',
+    layout: 'center',
     name: "ArticleDetail",
     data() {
-      return {
-        articleDetail: ''
-      }
+
+    },
+    async asyncData ({ params }) {
+      const res = await getArticlesById(params.id)
+      console.log(res)
+      return {articleDetail: res.data}
     },
     computed: {
       originText() {
@@ -49,12 +52,6 @@
           return "other";
         }
       }
-    },
-    created() {
-      getArticlesById(this.$route.params.id).then(response => {
-        console.log("文章详情", response);
-        this.articleDetail = response.data;
-      });
     }
   }
 </script>

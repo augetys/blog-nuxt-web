@@ -5,9 +5,9 @@
 </template>
 
 <script>
-  import ArticleList from "~/components/common/list";
+  import ArticleList from "~/components/common/List";
   export default {
-    name: "_date",
+    name: "date",
     components:{
       ArticleList
     }
