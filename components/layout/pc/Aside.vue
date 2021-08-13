@@ -45,13 +45,15 @@
       <div class="aside-tag">
         <ul class="aside-tag-list">
           <li v-for="(item,index) in tags" :key="index" class="item">
-            <div class="title">
-              <i :class="`${item.icon}`" class="iconfont" />
-              <span class="name">
+            <nuxt-link :to="`/tag/${item.id}`">
+              <div class="title">
+                <i :class="`${item.icon}`" class="iconfont" />
+                <span class="name">
                   <span>{{ item.name }}</span>
-                  <span>(1)</span>
+                  <span>({{ item.num }})</span>
                 </span>
-            </div>
+              </div>
+            </nuxt-link>
           </li>
         </ul>
       </div>

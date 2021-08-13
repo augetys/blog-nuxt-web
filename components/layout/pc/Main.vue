@@ -10,7 +10,6 @@
     <div id="index-page" class="container">
       <Nav></Nav>
       <div id="main" class="main-container">
-        <Carousel />
         <Nuxt/>
       </div>
       <Aside></Aside>
@@ -26,11 +25,9 @@
   import Aside from "~/components/layout/pc/Aside.vue";
   import Background from "~/components/common/Background.vue";
   import SmallTool from "../../common/Smalltool";
-  import Carousel from "../../common/Carousel";
   export default {
     name: "PcMain",
     components: {
-      Carousel,
       Background,
       Header,
       Footer,

@@ -1,13 +1,18 @@
 <template>
-    <article-list :article="articles"  />
+  <div>
+    <Carousel/>
+    <article-list :article="articles"/>
+  </div>
 </template>
 
 <script>
-  import { mapState } from "vuex";
-
+  import {mapState} from "vuex";
+  import Carousel from "~/components/common/carousel";
   import ArticleList from "~/components/common/List";
+
   export default {
-    components:{
+    components: {
+      Carousel,
       ArticleList
     },
     computed: {

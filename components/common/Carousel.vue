@@ -5,10 +5,15 @@
         <div v-for="item in loop" :key="item.id" class="swiper-slide">
           <div class="content">
             <template>
-              <nuxt-link :to="`/article/${item.id}`" class="link">
+              <nuxt-link v-if="!item.isLink" :to="item.targetUrl" class="link">
                 <img :src="item.imageUrl" :alt="item.title"/>
                 <span class="title">{{ item.title }}</span>
               </nuxt-link>
+
+              <div v-else class="link" @click="openUrl(item.targetUrl)">
+                <img :src="item.imageUrl" :alt="item.title" />
+                <span class="title">{{ item.title }}</span>
+              </div>
             </template>
           </div>
         </div>
@@ -50,6 +55,11 @@
       ...mapState({
         loop: state => state.loop.data,
       })
+    },
+    methods:{
+      openUrl(href){
+        window.open(href, '_blank');
+      }
     }
   }
 </script>
@@ -97,7 +107,7 @@
             width: 100%;
             transform: scale(1);
             transition: transform $transition-time-slow;
-
+            cursor:pointer;
             &:hover {
               transform: scale(1.06);
             }

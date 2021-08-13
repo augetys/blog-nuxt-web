@@ -45,7 +45,7 @@ const actions = {
     commit('setNav', nav.data);
 
     // 标签
-    let tags = await axios.post(`${state.api}/blog/tag/findAll`, {});
+    let tags = await axios(`${state.api}/blog/tag/getTag`, {});
     commit('setTags', tags.data);
 
     // 轮播图

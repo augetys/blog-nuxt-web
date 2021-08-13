@@ -32,7 +32,6 @@
     },
     async asyncData ({ params }) {
       const res = await getArticlesById(params.id)
-      console.log(res)
       return {articleDetail: res.data}
     },
     computed: {

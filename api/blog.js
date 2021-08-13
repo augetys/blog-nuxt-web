@@ -7,9 +7,9 @@ export function getArticlesById(id) {
   })
 }
 
-export function getArticlesByCategory(data) {
+export function getArticles(data) {
   return request({
-    url: '/blog/article/findByCategory',
+    url: '/blog/article/list',
     method: 'post',
     data:data
   })
