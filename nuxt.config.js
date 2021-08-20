@@ -14,16 +14,17 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'http://photo.choot.top/favicon.ico' }
     ]
   },
   /*
   ** Customize the progress-bar color
   */
   loading: { color: '#FFFFFF' },
-  router:{
-    base:'/node'
-  },
+  // 加入router后，nginx可以配置location，使用www.choot.top/node这样的形式访问
+  // router:{
+  //   base:'/node'
+  // },
   /*
   ** Global CSS
   */

@@ -5,7 +5,7 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 const state = {
-  api: 'http://localhost:8800',
+  api: 'http://www.choot.top/api',
   nav: {},
   tags: {},
   loop: {},
