@@ -3,7 +3,7 @@ import { Message, MessageBox } from 'element-ui'
 
 // 创建axios实例
 const service = axios.create({
-  baseURL: 'http://www.choot.top/api', // api 的 base_url
+  baseURL: 'https://www.choot.top/api', // api 的 base_url
   timeout: 10000 // 请求超时时间
 })
 
