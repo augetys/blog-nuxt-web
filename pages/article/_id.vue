@@ -1,38 +1,50 @@
 <template>
-  <div class="article-page">
-    <div ref="detail" class="detail">
+  <div>
+    <div class="article-page">
+      <div ref="detail" class="detail">
 
-      <transition name="module" mode="out-in">
-        <div class="oirigin" :class="originClass">
-          <span>{{originText }}</span>
+        <transition name="module" mode="out-in">
+          <div class="oirigin" :class="originClass">
+            <span>{{originText }}</span>
+          </div>
+        </transition>
+
+
+        <div key="knowledge" class="knowledge">
+          <template>
+            <h2 class="title">{{articleDetail.title}}</h2>
+            <div id="article-content" key="article-content" class="content markdown-body" v-highlight
+                 v-html="articleDetail.content"></div>
+          </template>
         </div>
-      </transition>
 
-
-      <div key="knowledge" class="knowledge">
-        <template>
-          <h2 class="title">{{articleDetail.title}}</h2>
-          <div id="article-content" key="article-content" class="content markdown-body" v-highlight
-               v-html="articleDetail.content"></div>
-        </template>
       </div>
-
     </div>
+    <Comment :comments="comments"/>
   </div>
 </template>
 
 <script>
   import {getArticlesById} from "~/api/blog";
+  import {getCommentByArticleId} from "~/api/blog";
   import {OriginState} from "~/constants/system";
+  import Comment from "~/components/common/Comment.vue";
+
   export default {
     layout: 'center',
     name: "ArticleDetail",
-    data() {
-
+    components: {
+      Comment
     },
-    async asyncData ({ params }) {
-      const res = await getArticlesById(params.id)
-      return {articleDetail: res.data}
+    async asyncData({params}) {
+      let [articleDetail, comments] = await Promise.all([
+        getArticlesById(params.id),
+        getCommentByArticleId({id:params.id,pageSize:10,pageNum:1})
+      ])
+      return {
+        articleDetail: articleDetail.data,
+        comments: comments.data.list
+      }
     },
     computed: {
       originText() {

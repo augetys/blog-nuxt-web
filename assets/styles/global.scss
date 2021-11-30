@@ -45,8 +45,8 @@ a {
   -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
-.container{
-  width:1050px;
+.container {
+  width: 1050px;
   margin: auto;
 }
 
@@ -122,4 +122,12 @@ footer {
   &:hover {
     background-color: rgba(95, 95, 95, .7);
   }
+}
+
+.el-textarea__inner {
+  background-color: rgba(255, 255, 255, 0.6);
+}
+
+.el-textarea__inner:focus {
+  border-color: #ad6598
 }

@@ -3,7 +3,9 @@
     <div class="header-container container">
       <div class="header-header">
         <div class="header-logo">
-          <h1>Blog</h1>
+          <h1>
+            <nuxt-link to="/" style="color: #ad6598; padding-left: 6px;">Blog</nuxt-link>
+          </h1>
         </div>
         <span class="header-slogan">不以物喜，不以己悲</span>
       </div>

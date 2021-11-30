@@ -5,7 +5,8 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 const state = {
-  api: 'http://www.choot.top/api',
+  api: 'http://localhost:8800',
+  //api: 'http://www.choot.top/api',
   nav: {},
   tags: {},
   loop: {},
@@ -56,9 +57,9 @@ const actions = {
     let hotArticles = await axios(`${state.api}/blog/article/getHotArticle`);
     commit('setHotArticles', hotArticles.data);
 
-    // 首页文章
-    let articles = await axios.post(`${state.api}/blog/article/list`, {pageSize: 10, pageNum: 1});
-    commit('setArticles', articles.data);
+    // // 首页文章
+    // let articles = await axios.post(`${state.api}/blog/article/list`, {pageSize: 10, pageNum: 1});
+    // commit('setArticles', articles.data);
   },
 
   // // 获取文章列表

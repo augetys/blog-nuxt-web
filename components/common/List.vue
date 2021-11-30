@@ -1,6 +1,7 @@
 <template>
   <div class="article-list">
     <transition name="module" mode="out-in">
+
       <transition-group
         v-if="article && article.length"
         key="list"
@@ -13,6 +14,11 @@
           :article="articleItem"
         />
       </transition-group>
+
+      <empty-box v-else>
+          <slot>空空如也。。。。。。。</slot>
+      </empty-box>
+
     </transition>
   </div>
 </template>

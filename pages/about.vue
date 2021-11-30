@@ -1,5 +1,8 @@
 <template>
   <div class="about-page">
+    <div class="about-photo">
+      <img src="https://photo.choot.top/1.jpg" alt="江南小镇" class="about-photo-me">
+    </div>
     <div class="about-me">
       <div class="description">
         <div class="item">
@@ -58,6 +61,15 @@
   .about-page {
     width: 595px;
     overflow: hidden;
+
+    .about-photo {
+      width: 100%;
+      margin-bottom: 10px;
+      .about-photo-me {
+        width: 100%;
+        height: 300px;
+      }
+    }
 
     .about-me {
       width: 100%;

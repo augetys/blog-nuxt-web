@@ -14,3 +14,10 @@ export function getArticles(data) {
     data:data
   })
 }
+export function getCommentByArticleId(data) {
+  return request({
+    url: '/comment/blogComment/commentsByArticleId',
+    method: 'post',
+    data:data
+  })
+}

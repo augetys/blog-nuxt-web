@@ -20,5 +20,6 @@
     text-align: center;
     justify-content: center;
     align-items: center;
+    color: #ad6598;
   }
 </style>

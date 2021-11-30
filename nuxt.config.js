@@ -30,11 +30,11 @@ module.exports = {
   */
   css: [
     "~/assets/styles/github-markdown.css", // 引入样式解决markdown转换成html，样式显示问题
-    "~/assets/styles/global.scss",
     "~/assets/fonts/iconfont.css",
     'element-ui/lib/theme-chalk/index.css',
     "highlight.js/styles/atelier-forest-dark.css",
-    'swiper/css/swiper.css'
+    'swiper/css/swiper.css',
+    "~/assets/styles/global.scss",
   ],
   /*
    ** Plugins to load before mounting the App
@@ -51,10 +51,12 @@ module.exports = {
   plugins: [
     '@/plugins/element-ui',
     { src: "~/plugins/highlight" },
+    { src: "~/plugins/extend" },
     { src: "~/plugins/canvas-nest", mode: "client" },
     { src: '@/assets/fonts/iconfont.js', ssr: false },
-    { src: '@/plugins/swiper', ssr: false }
-  ],
+    { src: '@/plugins/swiper', ssr: false },
+    { src: '@/plugins/video', ssr: false },
+],
 
   /*
   ** Nuxt.js modules
