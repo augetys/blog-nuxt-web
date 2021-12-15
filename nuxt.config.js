@@ -14,7 +14,7 @@ module.exports = {
       { hid: 'description', name: 'description', content: pkg.description }
     ],
     link: [
-      { rel: 'icon', type: 'image/x-icon', href: 'http://photo.choot.top/favicon.ico' }
+      { rel: 'icon', type: 'image/x-icon', href: 'https://photo.choot.top/favicon.ico' }
     ]
   },
   /*

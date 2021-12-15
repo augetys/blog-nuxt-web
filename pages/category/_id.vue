@@ -2,6 +2,7 @@
   <div class="category-archive-page">
     <Carousel/>
     <article-list :article="article"/>
+    <!-- https://blog.csdn.net/weixin_47758875/article/details/111353720-->
     <el-pagination
       layout="total, sizes,prev, pager, next,jumper"
       :current-page.sync="pageNum"
@@ -35,7 +36,7 @@
         pageSize: 10,
         article: [],
         total: 0,
-        id:''
+        id: ''
       }
     },
     async asyncData({params}) {
@@ -44,7 +45,7 @@
     },
     methods: {
       async getList() {
-        const res = await getArticles({categoryId: this.id,pageSize: this.pageSize, pageNum: this.pageNum})
+        const res = await getArticles({categoryId: this.id, pageSize: this.pageSize, pageNum: this.pageNum})
         this.article = res.data.list
         this.total = res.data.total
       },

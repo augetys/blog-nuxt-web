@@ -6,17 +6,45 @@
     <div class="comment-box">
       <!-- 评论输入框-->
       <div class="comment-input-box">
-        <el-input class="comment-input"
-                  v-model="inputComment"
-                  type="textarea"
-                  :rows="3"
-                  autofocus
-                  placeholder="写下你的评论...."
-                  style="margin-top: 20px;margin-bottom: 20px;">
-        </el-input>
+
+        <el-form ref="commentForm"
+                 :model="comment">
+          <el-form-item label="" prop="content" style="margin-bottom: 0;">
+            <el-input class="comment-input"
+                      v-model="comment.content"
+                      type="textarea"
+                      :rows="3"
+                      autofocus
+                      placeholder="写下你的评论...."
+                      style="margin-top: 20px;">
+            </el-input>
+          </el-form-item>
+
+          <el-row :gutter="20">
+            <el-col :span="12">
+              <el-form-item label="姓名：" prop="nickName">
+                <el-input
+                  placeholder="姓名或昵称"
+                  v-model="comment.nickName">
+                </el-input>
+              </el-form-item>
+            </el-col>
+
+            <el-col :span="12">
+              <el-form-item label="邮箱：" prop="mail">
+                <el-input
+                  placeholder="邮箱（必填，将保密）"
+                  v-model="comment.mail">
+                </el-input>
+              </el-form-item>
+            </el-col>
+          </el-row>
+        </el-form>
 
         <div class="btn-control">
-
+          <el-button style="background: #ad6598;border-color: #ad6598;color: #fff;" type="primary" icon="el-icon-mouse"
+                     @click="commitComment()">发表评论
+          </el-button>
         </div>
 
       </div>
@@ -26,7 +54,7 @@
         <div class="info">
           <img class="avatar" :src="item.userAvatar" width="36" height="36"/>
           <div class="right">
-            <div class="name">{{item.userId}}</div>
+            <div class="name">{{item.nickName}}</div>
             <div class="date">{{item.createTime}}</div>
           </div>
         </div>
@@ -60,30 +88,88 @@
               </span>
             </div>
           </div>
+
+          <!-- 回复框-->
           <transition name="fade">
             <div class="input-wrapper" v-if="showItemId === item.id">
-              <el-input class="gray-bg-input"
-                        v-model="inputReplay"
-                        type="textarea"
-                        :rows="3"
-                        autofocus
-                        placeholder="写下你的评论">
-              </el-input>
+
+              <el-form ref="commentForm"
+                       :model="replay">
+                <el-form-item label="" prop="ReplayContent" style="margin-bottom: 0;">
+                  <el-input class="comment-input"
+                            v-model="replay.content"
+                            type="textarea"
+                            :rows="3"
+                            autofocus
+                            :placeholder="subCommentPlaceholder"
+                            style="margin-top: 20px;">
+                  </el-input>
+                </el-form-item>
+
+                <el-row :gutter="20">
+                  <el-col :span="12">
+                    <el-form-item label="姓名：" prop="fromName">
+                      <el-input
+                        placeholder="姓名或昵称"
+                        v-model="replay.fromName">
+                      </el-input>
+                    </el-form-item>
+                  </el-col>
+
+                  <el-col :span="12">
+                    <el-form-item label="邮箱：" prop="ReplayMail">
+                      <el-input
+                        placeholder="邮箱（必填，将保密）"
+                        v-model="replay.mail">
+                      </el-input>
+                    </el-form-item>
+                  </el-col>
+                </el-row>
+              </el-form>
+
               <div class="btn-control">
-                <el-button class="btn" type="goon" round @click="commitComment" size="medium">确定</el-button>
-                <el-button class="btn" type="canel" round @click="cancel" size="medium">取消</el-button>
+                <el-button class="btn" type="goon" @click="commitReplay" size="medium">发布回复</el-button>
+                <el-button class="btn" type="canel" @click="cancel" size="medium">取消</el-button>
               </div>
             </div>
           </transition>
+
         </div>
       </div>
+
+      <el-pagination
+        layout="total, sizes,prev, pager, next,jumper"
+        :current-page.sync="pageNum"
+        :page-size="pageSize"
+        :page-sizes="[1,5,10]"
+        :total="comments.length"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+        class="article-pagination"
+      />
     </div>
   </div>
 </template>
 
 <script>
+  import {commitComment, commitReplay} from '~/api/comment'
+  import {getCommentByArticleId} from "~/api/blog";
 
-  import Vue from 'vue'
+  const defaultComment = {
+    content: null,
+    nickName: null,
+    mail: null,
+    articleId: null
+  }
+
+  const defaultReplay = {
+    content: null,
+    commentId: null,
+    fromName: null,
+    toId: null,
+    toName: null,
+    mail: null
+  }
 
   export default {
     components: {},
@@ -91,32 +177,51 @@
       comments: {
         type: Array,
         required: true
+      },
+      articleId: {
+        type: String,
+        required: true
       }
     },
     data() {
       return {
-        inputReplay: '',
-        inputComment: '',
-        showItemId: ''
+        comment: Object.assign({}, defaultComment),
+        replay: Object.assign({}, defaultReplay),
+        showItemId: '',
+        pageNum: 1,
+        pageSize: 10,
+        subCommentPlaceholder:''
       }
     },
-    computed: {},
     methods: {
       /**
-       * 点赞
+       * 提交评论
        */
-      likeClick(item) {
-        if (item.isLike === null) {
-          Vue.$set(item, "isLike", true);
-          item.likeNum++
-        } else {
-          if (item.isLike) {
-            item.likeNum--
-          } else {
-            item.likeNum++
-          }
-          item.isLike = !item.isLike;
-        }
+      commitComment() {
+        this.comment.articleId = this.articleId
+        commitComment(this.comment).then(response => {
+          this.$message({
+            message: response.message,
+            type: '评论发布成功'
+          })
+          // 刷新评论列表
+          this.getArticleCommentByPage();
+          // 清空评论表格
+          this.comment = Object.assign({}, defaultComment)
+        })
+      },
+
+      commitReplay() {
+        commitReplay(this.replay).then(response => {
+          this.$message({
+            message: response.message,
+            type: '回复发布成功'
+          })
+          // 刷新评论列表
+          this.getArticleCommentByPage();
+          // 清空回复表格
+          this.comment = Object.assign({}, defaultReplay)
+        })
       },
 
       /**
@@ -127,34 +232,49 @@
       },
 
       /**
-       * 提交评论
-       */
-      commitComment() {
-        console.log(this.inputReplay);
-      },
-
-      /**
        * 点击评论按钮显示输入框
        * item: 当前的评论
        * reply: 当前回复的评论
        */
       showCommentInput(item, reply) {
         if (reply) {
-          this.inputReplay = "@" + reply.fromName + " "
+          //  子评论（回复的回复）
+          this.subCommentPlaceholder = "@" + reply.fromName + " "
+          this.replay.toId = reply.fromId;
+          this.replay.toName = reply.fromName;
+          this.replay.commentId = item.id;
         } else {
-          this.inputReplay = ''
+          //  评论回复
+          this.replay.content = "@" + item.nickName + " "
+          this.replay.toId = item.userId;
+          this.replay.toName = item.nickName;
+          this.replay.commentId = item.id;
         }
         this.showItemId = item.id
+      },
+      getArticleCommentByPage() {
+        getCommentByArticleId({id: this.articleId, pageSize: this.pageSize, pageNum: this.pageNum}).then(response => {
+          this.comments = response.data.list
+        })
+      },
+      handleSizeChange(val) {
+        this.pageNum = 1
+        this.pageSize = val
+        this.getArticleCommentByPage()
+      },
+      handleCurrentChange(val) {
+        this.pageNum = val
+        this.getArticleCommentByPage()
       }
-    },
-    created() {
-      console.log(this.comments)
     }
   }
 </script>
 
 <style scoped lang="scss">
-
+  .article-pagination {
+    text-align: center;
+    padding-bottom: 10px;
+  }
   .comment-box {
     width: 1050px;
     margin: auto;
@@ -164,7 +284,7 @@
 
     .comment-input-box {
       width: 1008px;
-      margin: auto;
+      margin: 0 auto 20px;
     }
 
     .comment {
@@ -341,16 +461,11 @@
               color: #fff;
             }
 
-            .el-button--goon:hover {
-              background: #fff;
-              border-color: #eee;
-              color: #000000;
-            }
 
-            .el-button--canel:hover {
+            .el-button--canel {
               background: #fff;
               border-color: #DCDFE6;
-              color: #606266;
+              color: #ad6598;
             }
 
             .cancel {

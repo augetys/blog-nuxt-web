@@ -14,9 +14,18 @@ export function getArticles(data) {
     data:data
   })
 }
+
 export function getCommentByArticleId(data) {
   return request({
     url: '/comment/blogComment/commentsByArticleId',
+    method: 'post',
+    data:data
+  })
+}
+
+export function search(data) {
+  return request({
+    url: '/blog/article/keyword',
     method: 'post',
     data:data
   })

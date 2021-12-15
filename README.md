@@ -40,3 +40,6 @@ asyncData必须在 page component里才会被执行，指的是page目录
 非page component 使用vuex
 
 <client-only> 此组件用于仅在客户端渲染其他组件
+
+关于nuxt路由的说明
+https://segmentfault.com/a/1190000018784715

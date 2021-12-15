@@ -14,9 +14,10 @@
           class="search-input"
           placeholder="输入关键词"
           style="text-indent:10px;"
+          @keydown.enter="handleSearch"
         />
         <button class="search-btn">
-          <i class="iconfont icon-search"/>
+          <i class="iconfont icon-search" @click="handleSearch" />
         </button>
       </div>
     </div>
@@ -47,7 +48,7 @@
           <li v-for="(item,index) in tags" :key="index" class="item">
             <nuxt-link :to="`/tag/${item.id}`">
               <div class="title">
-                <i :class="`${item.icon}`" class="iconfont" />
+                <i :class="`${item.icon}`" class="iconfont"/>
                 <span class="name">
                   <span>{{ item.name }}</span>
                   <span>({{ item.num }})</span>
@@ -63,7 +64,8 @@
 
 <script>
   import Calendar from "~/components/common/Calendar.vue";
-  import { mapState } from "vuex";
+  import {mapState} from "vuex";
+
   export default {
     name: "PcAside",
     components: {
@@ -73,6 +75,12 @@
       return {
         keyword: "",
         hotTitle: "热火朝天"
+      }
+    },
+    methods: {
+      handleSearch() {
+        const keyword = this.keyword;
+        this.$router.push({name: 'search-keyword', params: {keyword}});
       }
     },
     computed: {

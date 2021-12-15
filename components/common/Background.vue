@@ -29,7 +29,7 @@
       width: 100%;
       height: 100%;
       opacity: 0.3;
-      background: url("http://photo.choot.top/2.jpg");
+      background: url("https://photo.choot.top/background.jpg");
     }
   }
 

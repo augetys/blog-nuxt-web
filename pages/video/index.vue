@@ -27,7 +27,7 @@
               src: this.$route.params.url, //url地址
             },
           ],
-          poster: 'https://photo.choot.top/232421750-1-112.flv', //你的封面地址 从上个页面中传入
+          poster: 'http://video.choot.top/d997ca82e17f4048818464cfb27215b3', //你的封面地址 从上个页面中传入
           // width: document.documentElement.clientWidth, //播放器宽度
           notSupportedMessage: "此视频暂无法播放，请稍后再试", //允许覆盖Video.js无法播放媒体源时显示的默认信息。
           controlBar: {

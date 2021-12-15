@@ -20,7 +20,7 @@
 
       </div>
     </div>
-    <Comment :comments="comments"/>
+    <Comment :comments="comments" :articleId="articleId"/>
   </div>
 </template>
 
@@ -36,10 +36,15 @@
     components: {
       Comment
     },
+    data(){
+      return{
+        articleId:'ssss'
+      }
+    },
     async asyncData({params}) {
       let [articleDetail, comments] = await Promise.all([
         getArticlesById(params.id),
-        getCommentByArticleId({id:params.id,pageSize:10,pageNum:1})
+        getCommentByArticleId({id: params.id, pageSize: 10, pageNum: 1})
       ])
       return {
         articleDetail: articleDetail.data,
@@ -63,7 +68,10 @@
           return "other";
         }
       }
-    }
+    },
+    created() {
+      this.articleId = this.$route.params.id
+    },
   }
 </script>
 
