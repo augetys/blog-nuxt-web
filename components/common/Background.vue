@@ -28,7 +28,7 @@
       position: absolute;
       width: 100%;
       height: 100%;
-      opacity: 0.3;
+      opacity: 0.4;
       background: url("https://photo.choot.top/background.jpg");
     }
   }

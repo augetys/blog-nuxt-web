@@ -14,7 +14,6 @@
                       v-model="comment.content"
                       type="textarea"
                       :rows="3"
-                      autofocus
                       placeholder="写下你的评论...."
                       style="margin-top: 20px;">
             </el-input>
@@ -100,7 +99,6 @@
                             v-model="replay.content"
                             type="textarea"
                             :rows="3"
-                            autofocus
                             :placeholder="subCommentPlaceholder"
                             style="margin-top: 20px;">
                   </el-input>

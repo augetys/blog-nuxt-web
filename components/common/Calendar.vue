@@ -125,7 +125,7 @@
   .calendar-box {
     min-height: 17em;
     margin-bottom: 1.236rem;
-    background-color: #eee;
+    background-color: hsla(0,0%,100%,0.6);
     padding: 1rem;
 
     > .months {

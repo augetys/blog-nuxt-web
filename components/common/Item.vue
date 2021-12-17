@@ -30,8 +30,8 @@
                 <span>0</span>
           </span>
           <span class="categories">
-            <i class="iconfont icon-home"></i>
-            <span>醉花阴</span>
+            <i :class="`${article.categoryIcon}`" class="iconfont"></i>
+            <span>{{article.categoryName}}</span>
           </span>
         </div>
       </div>

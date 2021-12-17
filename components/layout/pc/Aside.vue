@@ -121,7 +121,7 @@
       overflow: hidden;
       display: flex;
       justify-content: space-between;
-      background-color: #eee;
+      background-color: hsla(0,0%,100%,0.6);
 
       .search-input,
       .search-btn,
@@ -172,7 +172,7 @@
 
     > .aside-article {
       overflow: hidden;
-      background-color: #eee;
+      background-color: hsla(0,0%,100%,0.6);
 
       > .title {
         height: 3em;
@@ -262,7 +262,7 @@
       top: $top-height;
       width: $aside-width;
       margin-bottom: 1.236rem;
-      background-color: #eee;
+      background-color: hsla(0,0%,100%,0.6);
 
       > .aside-tag {
         max-height: calc(
