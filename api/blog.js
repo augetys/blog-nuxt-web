@@ -30,3 +30,27 @@ export function search(data) {
     data:data
   })
 }
+
+export function getSoul(data) {
+  return request({
+    url: '/blog/soul/random',
+    method: 'post',
+    data:data
+  })
+}
+
+export function getPhoto(data) {
+  return request({
+    url: '/blog/photo/findAll',
+    method: 'post',
+    data:data
+  })
+}
+
+export function getNavigation(data) {
+  return request({
+    url: '/blog/website/getNavigation',
+    method: 'post',
+    data:data
+  })
+}

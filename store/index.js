@@ -5,13 +5,14 @@ import axios from 'axios'
 Vue.use(Vuex)
 
 const state = {
-  api: 'http://localhost:8800',
-  //api: 'http://www.choot.top/api',
+  //api: 'http://localhost:8800',
+  api: 'http://www.choot.top/api',
   nav: {},
   tags: {},
   loop: {},
   hotArticles: {},
-  articles: {}
+  articles: {},
+  soul:''
 };
 
 const mutations = {
@@ -34,6 +35,10 @@ const mutations = {
   // 首页文章
   setArticles(state, data) {
     state.articles = data
+  },
+  // 毒鸡汤
+  setSoul(state, data) {
+    state.soul = data
   }
 };
 
@@ -57,9 +62,9 @@ const actions = {
     let hotArticles = await axios(`${state.api}/blog/article/getHotArticle`);
     commit('setHotArticles', hotArticles.data);
 
-    // // 首页文章
-    // let articles = await axios.post(`${state.api}/blog/article/list`, {pageSize: 10, pageNum: 1});
-    // commit('setArticles', articles.data);
+    // 鸡汤
+    let soul = await axios('https://api.oick.cn/dutang/api.php');
+    commit('setSoul', soul.data);
   },
 
   // // 获取文章列表

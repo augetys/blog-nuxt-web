@@ -8,7 +8,8 @@
       <div class="comment-input-box">
 
         <el-form ref="commentForm"
-                 :model="comment">
+                 :model="comment"
+                 :rules="commentRules">
           <el-form-item label="" prop="content" style="margin-bottom: 0;">
             <el-input class="comment-input"
                       v-model="comment.content"
@@ -20,7 +21,7 @@
           </el-form-item>
 
           <el-row :gutter="20">
-            <el-col :span="12">
+            <el-col :span="12" style="margin-top: 10px;">
               <el-form-item label="姓名：" prop="nickName">
                 <el-input
                   placeholder="姓名或昵称"
@@ -29,7 +30,7 @@
               </el-form-item>
             </el-col>
 
-            <el-col :span="12">
+            <el-col :span="12" style="margin-top: 10px;">
               <el-form-item label="邮箱：" prop="mail">
                 <el-input
                   placeholder="邮箱（必填，将保密）"
@@ -42,13 +43,13 @@
 
         <div class="btn-control">
           <el-button style="background: #ad6598;border-color: #ad6598;color: #fff;" type="primary" icon="el-icon-mouse"
-                     @click="commitComment()">发表评论
+                     @click="commitComment('commentForm')">发表评论
           </el-button>
         </div>
 
       </div>
 
-      <div class="comment" v-for="item in comments">
+      <div class="comment" v-for="(item,index) in comments">
         <!-- 用户信息-->
         <div class="info">
           <img class="avatar" :src="item.userAvatar" width="36" height="36"/>
@@ -92,9 +93,10 @@
           <transition name="fade">
             <div class="input-wrapper" v-if="showItemId === item.id">
 
-              <el-form ref="commentForm"
-                       :model="replay">
-                <el-form-item label="" prop="ReplayContent" style="margin-bottom: 0;">
+              <el-form :ref="'replayForm'+index"
+                       :model="replay"
+                       :rules="replayRules">
+                <el-form-item label="" prop="content" style="margin-bottom: 0;">
                   <el-input class="comment-input"
                             v-model="replay.content"
                             type="textarea"
@@ -105,7 +107,7 @@
                 </el-form-item>
 
                 <el-row :gutter="20">
-                  <el-col :span="12">
+                  <el-col :span="12" style="margin-top: 10px;">
                     <el-form-item label="姓名：" prop="fromName">
                       <el-input
                         placeholder="姓名或昵称"
@@ -114,8 +116,8 @@
                     </el-form-item>
                   </el-col>
 
-                  <el-col :span="12">
-                    <el-form-item label="邮箱：" prop="ReplayMail">
+                  <el-col :span="12" style="margin-top: 10px;">
+                    <el-form-item label="邮箱：" prop="mail">
                       <el-input
                         placeholder="邮箱（必填，将保密）"
                         v-model="replay.mail">
@@ -126,7 +128,7 @@
               </el-form>
 
               <div class="btn-control">
-                <el-button class="btn" type="goon" @click="commitReplay" size="medium">发布回复</el-button>
+                <el-button class="btn" type="goon" @click="commitReplay(index)" size="medium">发布回复</el-button>
                 <el-button class="btn" type="canel" @click="cancel" size="medium">取消</el-button>
               </div>
             </div>
@@ -182,43 +184,107 @@
       }
     },
     data() {
+      const checkEmail = (rule, value, callback) => {
+        const mailReg = /^([a-zA-Z0-9_-])+@([a-zA-Z0-9_-])+(.[a-zA-Z0-9_-])+/
+        if (!value) {
+          return callback(new Error('邮箱不能为空'))
+        }
+        setTimeout(() => {
+          if (mailReg.test(value)) {
+            callback()
+          } else {
+            callback(new Error('请输入正确的邮箱格式'))
+          }
+        }, 100)
+      }
       return {
         comment: Object.assign({}, defaultComment),
         replay: Object.assign({}, defaultReplay),
         showItemId: '',
         pageNum: 1,
         pageSize: 10,
-        subCommentPlaceholder:''
+        subCommentPlaceholder: '',
+        commentRules: {
+          mail: [
+            {required: true, validator: checkEmail, trigger: 'change'}
+          ],
+          content: [
+            {required: true, message: '请输入评论内容', trigger: 'change'}
+          ],
+          nickName: [
+            {required: true, message: '请输入昵称', trigger: 'change'}
+          ]
+        },
+        replayRules: {
+          mail: [
+            {required: true, validator: checkEmail, trigger: 'change'}
+          ],
+          content: [
+            {required: true, message: '请输入回复内容', trigger: 'change'}
+          ],
+          fromName: [
+            {required: true, message: '请输入昵称', trigger: 'change'}
+          ]
+        }
       }
     },
     methods: {
       /**
        * 提交评论
        */
-      commitComment() {
-        this.comment.articleId = this.articleId
-        commitComment(this.comment).then(response => {
-          this.$message({
-            message: response.message,
-            type: '评论发布成功'
-          })
-          // 刷新评论列表
-          this.getArticleCommentByPage();
-          // 清空评论表格
-          this.comment = Object.assign({}, defaultComment)
+      commitComment(commentForm) {
+        this.$refs[commentForm].validate((valid) => {
+          if (valid) {
+            this.comment.articleId = this.articleId
+            commitComment(this.comment).then(response => {
+              this.$message({
+                message: response.message,
+                type: 'success'
+              })
+              // 刷新评论列表
+              this.getArticleCommentByPage();
+              // 清空评论表格
+              this.comment = Object.assign({}, defaultComment)
+              // 清除表单校验
+              this.$nextTick(()=>{
+                this.$refs[commentForm].clearValidate()
+              })
+            })
+          } else {
+            this.$message({
+              message: '请填写正确的信息！',
+              type: 'error',
+              duration: 1000
+            })
+          }
         })
       },
 
-      commitReplay() {
-        commitReplay(this.replay).then(response => {
-          this.$message({
-            message: response.message,
-            type: '回复发布成功'
-          })
-          // 刷新评论列表
-          this.getArticleCommentByPage();
-          // 清空回复表格
-          this.comment = Object.assign({}, defaultReplay)
+      commitReplay(index) {
+        this.$refs['replayForm' + index][0].validate((valid) => {
+          if (valid) {
+            commitReplay(this.replay).then(response => {
+              this.$message({
+                message: response.message,
+                type: 'success'
+              })
+              // 刷新评论列表
+              this.getArticleCommentByPage();
+              // 清空评论表格
+              this.replay = Object.assign({}, defaultReplay)
+              // 清除表单校验
+              this.$nextTick(()=>{
+                this.$refs['replayForm' + index][0].clearValidate()
+                this.showItemId = ''
+              })
+            })
+          } else {
+            this.$message({
+              message: '请填写正确的信息！',
+              type: 'error',
+              duration: 1000
+            })
+          }
         })
       },
 
@@ -243,7 +309,7 @@
           this.replay.commentId = item.id;
         } else {
           //  评论回复
-          this.replay.content = "@" + item.nickName + " "
+          this.subCommentPlaceholder = "@" + item.nickName + " "
           this.replay.toId = item.userId;
           this.replay.toName = item.nickName;
           this.replay.commentId = item.id;
@@ -273,6 +339,7 @@
     text-align: center;
     padding-bottom: 10px;
   }
+
   .comment-box {
     width: 1050px;
     margin: auto;

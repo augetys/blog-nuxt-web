@@ -3,7 +3,7 @@
   <div id="nav" class="nav-container aside-nav">
     <!--    link-active-->
     <nav class="nav-list">
-      <nuxt-link v-for="(item,index) in navs" :key="index" :to="`${item.path}`" class="item">
+      <nuxt-link v-for="(item,index) in navs" :key="index" :to="`${item.path}`" :target="`${item.target}`" class="item">
         <i :class="`${item.icon}`" class="iconfont"></i>
         <span class="text">{{item.name}}</span>
       </nuxt-link>

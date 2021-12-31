@@ -18,9 +18,17 @@
           </template>
         </div>
 
+        <div class="transport">
+          <p>————————————————</p>
+          <p class="title" v-if="this.articleDetail.isOriginal === 0">
+            版权声明：本文为{{articleDetail.articleAuthor}}的原创文章，转载请附上原文出处链接及本声明。
+          </p>
+          <p>原文链接：{{articleDetail.articlePart}}</p>
+        </div>
+
       </div>
     </div>
-    <Comment :comments="comments" :articleId="articleId"/>
+    <Comment :comments="comments" :articleId="articleId" v-if="this.articleDetail.openComment === 1"/>
   </div>
 </template>
 
@@ -36,9 +44,9 @@
     components: {
       Comment
     },
-    data(){
-      return{
-        articleId:'ssss'
+    data() {
+      return {
+        articleId: ''
       }
     },
     async asyncData({params}) {
@@ -86,6 +94,14 @@
     font-size: 28px;
     color: #333;
     margin-bottom: 10px;;
+  }
+
+  .transport{
+    color: red;
+    margin-top: 10px;
+  }
+  .transport p{
+    padding-top: 10px;
   }
 
   .inputBox input {
@@ -141,9 +157,7 @@
 
 <style lang="scss">
   .article-page {
-    width: 1050px;
-    margin: auto;
-    padding-top: 6.236rem;
+    /*padding-top: 6.236rem;*/
 
     > .detail,
     > .mammon,

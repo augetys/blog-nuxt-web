@@ -55,7 +55,6 @@ module.exports = {
     { src: "~/plugins/canvas-nest", mode: "client" },
     { src: '@/assets/fonts/iconfont.js', ssr: false },
     { src: '@/plugins/swiper', ssr: false },
-    { src: '@/plugins/video', ssr: false },
 ],
 
   /*

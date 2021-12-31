@@ -4,25 +4,31 @@
       <div class="header-header">
         <div class="header-logo">
           <h1>
-            <nuxt-link to="/" style="color: #ad6598; padding-left: 6px;">Blog</nuxt-link>
+            <nuxt-link to="/" style="color: #ad6598; padding-left: 6px;">Yoyo</nuxt-link>
           </h1>
         </div>
-        <span class="header-slogan">不以物喜，不以己悲</span>
+        <span class="header-slogan">{{ soul }}</span>
       </div>
     </div>
   </header>
 </template>
 
 <script>
+  import { mapState } from "vuex";
   export default {
-    name: "PcHeader"
+    name: "PcHeader",
+    computed: {
+      ...mapState({
+        soul: state => state.soul,
+      })
+    }
   }
 </script>
 
 <style lang="scss" scoped>
   .header {
     position: fixed;
-    top:0;
+    top: 0;
     left: 0;
     width: 100%;
     height: $header-height;
@@ -43,7 +49,7 @@
         position: relative;
         align-items: center;
         padding-left: $sm-gap;
-        width: 29em;
+        width: 60em;
         overflow: hidden;
 
         @keyframes logo-blink {
@@ -58,7 +64,7 @@
         .header-logo {
           color: #ad6598;
           width: 11rem;
-          margin-right: $gap * 4;
+          margin-right: $gap * 2.8;
           mask-size: 88%;
           mask-position: -30%;
           mask-image: linear-gradient(

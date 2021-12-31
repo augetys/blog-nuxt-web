@@ -3,8 +3,8 @@ import { Message, MessageBox } from 'element-ui'
 
 // 创建axios实例
 const service = axios.create({
-  // baseURL: 'https://www.choot.top/api', // api 的 base_url
-  baseURL: 'http://localhost:8800', // api 的 base_url
+   baseURL: 'https://www.choot.top/api', // api 的 base_url
+   //baseURL: 'http://localhost:8800', // api 的 base_url
   timeout: 10000 // 请求超时时间
 })
 
@@ -26,7 +26,20 @@ service.interceptors.request.use(
 // response 拦截器
 service.interceptors.response.use(
   response => {
-    return response.data
+    const res = response.data
+    // if the custom code is not 20000, it is judged as an error.
+    if (res.code === 200) {
+      // 请求完毕
+      return response.data
+    }else {
+      console.log('错误信息', res)
+      Message({
+        message: res.message,
+        type: 'error',
+        duration: 5 * 1000
+      })
+      return Promise.reject(res.message)
+    }
   },
   error => {
     console.log('err' + error) // for debug

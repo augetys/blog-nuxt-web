@@ -17,7 +17,7 @@
           @keydown.enter="handleSearch"
         />
         <button class="search-btn">
-          <i class="iconfont icon-search" @click="handleSearch" />
+          <i class="iconfont icon-search" @click="handleSearch"/>
         </button>
       </div>
     </div>
@@ -80,7 +80,11 @@
     methods: {
       handleSearch() {
         const keyword = this.keyword;
-        this.$router.push({name: 'search-keyword', params: {keyword}});
+        if (keyword === "") {
+          this.$router.push({name: 'index'});
+        } else {
+          this.$router.push({name: 'search-keyword', params: {keyword}});
+        }
       }
     },
     computed: {
@@ -121,7 +125,7 @@
       overflow: hidden;
       display: flex;
       justify-content: space-between;
-      background-color: hsla(0,0%,100%,0.6);
+      background-color: hsla(0, 0%, 100%, 0.6);
 
       .search-input,
       .search-btn,
@@ -172,7 +176,7 @@
 
     > .aside-article {
       overflow: hidden;
-      background-color: hsla(0,0%,100%,0.6);
+      background-color: hsla(0, 0%, 100%, 0.6);
 
       > .title {
         height: 3em;
@@ -262,7 +266,7 @@
       top: $top-height;
       width: $aside-width;
       margin-bottom: 1.236rem;
-      background-color: hsla(0,0%,100%,0.6);
+      background-color: hsla(0, 0%, 100%, 0.6);
 
       > .aside-tag {
         max-height: calc(

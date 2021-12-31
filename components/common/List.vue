@@ -2,18 +2,15 @@
   <div class="article-list">
     <transition name="module" mode="out-in">
 
-      <transition-group
+      <div
         v-if="article && article.length"
-        key="list"
-        name="fade"
-        tag="div"
       >
         <list-item
           v-for="(articleItem) in article"
           :key="articleItem.id"
           :article="articleItem"
         />
-      </transition-group>
+      </div>
 
       <empty-box v-else>
           <slot>空空如也。。。。。。。</slot>
