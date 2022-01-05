@@ -62,10 +62,10 @@
         <div class="content">{{item.content}}</div>
         <!-- 点赞回复-->
         <div class="control">
-        <span class="like" :class="{active: item.isLike}" @click="likeClick(item)">
-          <i class="iconfont icon-like"></i>
-          <span class="like-num">{{item.likeNum > 0 ? item.likeNum + '人赞' : '赞'}}</span>
-        </span>
+<!--        <span class="like" :class="{active: item.isLike}" @click="likeClick(item)">-->
+<!--          <i class="iconfont icon-like"></i>-->
+<!--          <span class="like-num">{{item.likeNum > 0 ? item.likeNum + '人赞' : '赞'}}</span>-->
+<!--        </span>-->
           <span class="comment-reply" @click="showCommentInput(item)">
           <i class="iconfont icon-comment"></i>
           <span>回复</span>

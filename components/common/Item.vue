@@ -23,12 +23,12 @@
           </span>
           <span class="comments">
                 <i class="iconfont icon-comment"></i>
-                <span>1</span>
+                <span>{{article.commentCount}}</span>
           </span>
-          <span class="likes">
-                <i class="iconfont icon-like"></i>
-                <span>0</span>
-          </span>
+<!--          <span class="likes">-->
+<!--                <i class="iconfont icon-like"></i>-->
+<!--                <span>0</span>-->
+<!--          </span>-->
           <span class="categories">
             <i :class="`${article.categoryIcon}`" class="iconfont"></i>
             <span>{{article.categoryName}}</span>

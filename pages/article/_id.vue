@@ -18,9 +18,9 @@
           </template>
         </div>
 
-        <div class="transport">
+        <div class="transport" v-if="this.articleDetail.isOriginal === 0">
           <p>————————————————</p>
-          <p class="title" v-if="this.articleDetail.isOriginal === 0">
+          <p class="title">
             版权声明：本文为{{articleDetail.articleAuthor}}的原创文章，转载请附上原文出处链接及本声明。
           </p>
           <p>原文链接：{{articleDetail.articlePart}}</p>
