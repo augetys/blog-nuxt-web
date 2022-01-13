@@ -1,6 +1,6 @@
 <template>
   <footer id="footer" class="footer">
-    <div class="footer-content">©{{ year }}&nbsp;&nbsp;{{ meta.title }}</div>
+    <div class="footer-content">©{{ year }}&nbsp;&nbsp;{{ meta.title }} <a target="_blank" href="https://beian.miit.gov.cn/">{{ meta.unit }}</a></div>
   </footer>
 </template>
 
