@@ -6,7 +6,7 @@
       layout="total, sizes,prev, pager, next,jumper"
       :current-page.sync="pageNum"
       :page-size="pageSize"
-      :page-sizes="[1,5,10]"
+      :page-sizes="[10,20,50]"
       :total="total"
       @size-change="handleSizeChange"
       @current-change="handleCurrentChange"

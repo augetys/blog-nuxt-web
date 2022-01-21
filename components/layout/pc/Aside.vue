@@ -48,7 +48,7 @@
           <li v-for="(item,index) in tags" :key="index" class="item">
             <nuxt-link :to="`/tag/${item.id}`">
               <div class="title">
-                <i :class="`${item.icon}`" class="iconfont"/>
+                <!-- <i :class="`${item.icon}`" class="iconfont"/>-->
                 <span class="name">
                   <span>{{ item.name }}</span>
                   <span>({{ item.num }})</span>
