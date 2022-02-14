@@ -4,6 +4,7 @@
     <el-col :span="8" v-for="(item, index) in photoList" :key="index">
       <el-card>
         <el-image :src="`${item.url}`" lazy></el-image>
+        <p class="photo-tip">{{item.tip}}</p>
       </el-card>
     </el-col>
 
@@ -29,7 +30,7 @@
 <style scoped>
   .el-card {
     width: 340px;
-    height: 400px;
+    height: 418px;
     margin-bottom: 20px;
   }
 
@@ -37,5 +38,11 @@
     width: 100%;
     height: 360px;
     vertical-align: text-top;cursor:pointer;
+  }
+
+  .photo-tip{
+    font-size: 16px;
+    text-align: center;
+    padding: 5px 0;
   }
 </style>
