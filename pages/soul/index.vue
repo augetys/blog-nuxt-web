@@ -3,7 +3,7 @@
     <div class="block">
       <el-timeline>
 
-        <el-timeline-item v-for="(item, index) in soulList" :timestamp="item.createTime">
+        <el-timeline-item v-for="(item, index) in soulList" :timestamp="item.createTime" :key="index">
           <el-card>
             <p>{{item.content}}</p>
             <p class="source">{{item.source}}</p>

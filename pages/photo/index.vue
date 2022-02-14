@@ -1,7 +1,7 @@
 <template>
   <el-row :gutter="20">
 
-    <el-col :span="8" v-for="(item, index) in photoList">
+    <el-col :span="8" v-for="(item, index) in photoList" :key="index">
       <el-card>
         <el-image :src="`${item.url}`" lazy></el-image>
       </el-card>
