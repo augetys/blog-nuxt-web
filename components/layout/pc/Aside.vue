@@ -269,9 +269,9 @@
       background-color: hsla(0, 0%, 100%, 0.6);
 
       > .aside-tag {
-        max-height: calc(
+        /*max-height: calc(
           100vh - 88px - #{$top-height + $lg-gap + $lg-gap + $tool-height}
-        );
+        );*/
         overflow-y: auto;
       }
 
