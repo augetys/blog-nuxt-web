@@ -299,7 +299,7 @@
             height: 2em;
             line-height: 2em;
             font-size: $font-size-h6;
-            text-transform: capitalize;
+            /*text-transform: capitalize;*/
 
             &:last-child {
               margin: 0;
