@@ -32,7 +32,7 @@ module.exports = {
     "~/assets/styles/github-markdown.css", // 引入样式解决markdown转换成html，样式显示问题
     "~/assets/fonts/iconfont.css",
     'element-ui/lib/theme-chalk/index.css',
-    "highlight.js/styles/atelier-forest-dark.css",
+    "highlight.js/styles/atom-one-dark.css",
     'swiper/css/swiper.css',
     "~/assets/styles/global.scss",
   ],

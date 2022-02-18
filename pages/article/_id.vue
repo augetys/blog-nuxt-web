@@ -286,7 +286,7 @@
 
           p {
             line-height: 2.2em;
-            text-indent: 2em;
+            /*text-indent: 2em;*/
             margin-bottom: 1em;
 
             &.text-center {
