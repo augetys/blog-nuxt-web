@@ -15,7 +15,7 @@
         playbackSpeed:[0.5, 0.75, 1, 1.25, 1.5, 2],
         autoplay:true,
         video:{
-          url:'https://photo.choot.top/216259425-1-64.mp4'
+          url:'https://photo.choot.top/mv/4uhoy-jo3yh.mp4'
         }
       })
     }
