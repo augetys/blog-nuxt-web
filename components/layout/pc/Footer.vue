@@ -1,6 +1,6 @@
 <template>
   <footer id="footer" class="footer">
-    <div class="footer-content">©{{ year }}&nbsp;&nbsp;{{ meta.title }} <a target="_blank" href="https://beian.miit.gov.cn/">{{ meta.unit }}</a></div>
+    <div class="footer-content"><a target="_blank" href="https://github.com/augetys/">Github&nbsp;</a>©{{ year }}&nbsp;{{ meta.title }} <a target="_blank" href="https://beian.miit.gov.cn/">{{ meta.unit }}</a></div>
   </footer>
 </template>
 
@@ -31,6 +31,7 @@
       font-size: $font-size-h6;
       text-align: center;
       text-transform: uppercase;
+      color: #000;
     }
   }
 </style>
