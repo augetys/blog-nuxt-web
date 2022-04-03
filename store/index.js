@@ -63,7 +63,7 @@ const actions = {
     commit('setHotArticles', hotArticles.data);
 
     // 鸡汤
-    let soul = await axios('https://api.oick.cn/dutang/api.php');
+    let soul = await axios(`${state.api}/home/getSoul`);
     commit('setSoul', soul.data);
   },
 
