@@ -64,7 +64,7 @@ const actions = {
 
     // 鸡汤
     let soul = await axios(`${state.api}/home/getSoul`);
-    commit('setSoul', soul.data);
+    commit('setSoul', soul.data.data);
   },
 
   // // 获取文章列表
