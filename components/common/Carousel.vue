@@ -1,6 +1,6 @@
 <template>
   <el-carousel indicator-position="outside" height="15em">
-    <el-carousel-item v-for="item in loop" :key="item">
+    <el-carousel-item v-for="item in loop" :key="item.index">
       <nuxt-link v-if="!item.isLink" :to="item.targetUrl" class="link">
         <img :src="item.imageUrl" :alt="item.title"/>
         <span class="title">{{ item.title }}</span>
